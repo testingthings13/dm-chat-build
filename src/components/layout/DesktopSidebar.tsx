@@ -1,5 +1,6 @@
 import { Home, Users, Box, User, MessageCircle, Settings } from "lucide-react";
 import { useNavigate, useLocation } from "react-router-dom";
+import logo from "@/assets/logo.png";
 
 const mainNav = [
   { id: "chat", icon: MessageCircle, path: "/home" },
