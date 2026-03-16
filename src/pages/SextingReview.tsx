@@ -1,6 +1,6 @@
 import { useParams, useNavigate } from "react-router-dom";
 import { ArrowLeft } from "lucide-react";
-import { sextingScripts } from "@/data/mockData";
+import { sextingScripts, galleryImages } from "@/data/mockData";
 import { motion } from "framer-motion";
 
 const SextingReview = () => {
