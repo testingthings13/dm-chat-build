@@ -1,116 +1,70 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
-import { ArrowLeft } from "lucide-react";
+import { MessageCircle, Eye, EyeOff } from "lucide-react";
 
 const Signup = () => {
   const navigate = useNavigate();
-  const [form, setForm] = useState({ email: "", password: "", confirmPassword: "" });
-
-  const handleSignup = (e: React.FormEvent) => {
-    e.preventDefault();
-    navigate("/home");
-  };
+  const [showPassword, setShowPassword] = useState(false);
+  const [showConfirm, setShowConfirm] = useState(false);
 
   return (
-    <div className="min-h-screen flex relative overflow-hidden">
-      {/* Background */}
-      <div className="absolute inset-0">
-        <div className="absolute top-1/3 right-1/4 w-80 h-80 bg-primary/15 rounded-full blur-[100px]" />
-      </div>
-
-      {/* Left decorative area - desktop only */}
-      <div className="hidden lg:flex flex-1 items-center justify-center relative">
-        <div className="text-center">
-          <div className="w-24 h-24 rounded-2xl gradient-primary flex items-center justify-center mx-auto mb-6 shadow-2xl shadow-primary/30">
-            <span className="text-primary-foreground font-extrabold text-4xl">C</span>
-          </div>
-          <h2 className="text-4xl font-extrabold gradient-text">Chatabox</h2>
-          <p className="text-muted-foreground mt-3 text-sm max-w-xs mx-auto">
-            Join thousands of creators earning $$$ every day!
-          </p>
-        </div>
-      </div>
-
-      {/* Form */}
+    <div className="min-h-screen flex flex-col bg-background relative overflow-hidden">
+      <div className="absolute inset-0 bg-gradient-to-b from-muted/30 to-background" />
       <motion.div
-        initial={{ opacity: 0, x: 20 }}
-        animate={{ opacity: 1, x: 0 }}
-        transition={{ duration: 0.4 }}
-        className="flex-1 flex items-center justify-center px-6 relative z-10"
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5 }}
+        className="relative z-10 flex flex-col flex-1 px-6 pt-8 pb-6 max-w-md mx-auto w-full"
       >
-        <div className="w-full max-w-sm">
-          <div className="flex items-center gap-3 mb-8">
-            <button
-              onClick={() => navigate("/")}
-              className="w-9 h-9 rounded-lg bg-card border border-border flex items-center justify-center text-muted-foreground hover:text-foreground transition-colors"
-            >
-              <ArrowLeft size={18} />
-            </button>
-            <div>
-              <p className="text-xs text-muted-foreground font-medium">Profile Setup</p>
-              <h1 className="text-xl font-bold text-foreground">Instant Account Creation</h1>
+        <div className="flex items-center justify-between bg-card/80 backdrop-blur-sm rounded-2xl px-4 py-3 mb-2">
+          <div className="flex items-center gap-3">
+            <div className="w-10 h-10 rounded-xl gradient-primary flex items-center justify-center">
+              <MessageCircle size={20} className="text-primary-foreground" fill="currentColor" />
+            </div>
+            <span className="text-lg font-bold text-foreground">Profile Setup</span>
+          </div>
+          <span className="text-sm font-semibold text-muted-foreground bg-secondary px-3 py-1 rounded-full">1/10</span>
+        </div>
+        <div className="h-1 bg-muted rounded-full mb-8">
+          <div className="h-full w-[10%] gradient-primary rounded-full" />
+        </div>
+        <h2 className="text-2xl font-extrabold text-foreground mb-1">Instant Account Creation</h2>
+        <p className="text-sm text-muted-foreground mb-6">Join thousands of creators earning $$$ every day!</p>
+        <div className="space-y-4 flex-1">
+          <div>
+            <label className="text-sm font-semibold text-foreground mb-1.5 block">Email</label>
+            <input type="email" placeholder="Enter your email" className="w-full h-12 px-4 rounded-xl bg-secondary text-foreground placeholder:text-muted-foreground outline-none focus:ring-2 focus:ring-ring text-sm" />
+          </div>
+          <div>
+            <label className="text-sm font-semibold text-foreground mb-1.5 block">Password</label>
+            <div className="relative">
+              <input type={showPassword ? "text" : "password"} placeholder="Create your password" className="w-full h-12 px-4 pr-12 rounded-xl bg-secondary text-foreground placeholder:text-muted-foreground outline-none focus:ring-2 focus:ring-ring text-sm" />
+              <button onClick={() => setShowPassword(!showPassword)} className="absolute right-4 top-1/2 -translate-y-1/2 text-muted-foreground">
+                {showPassword ? <Eye size={18} /> : <EyeOff size={18} />}
+              </button>
             </div>
           </div>
-
-          <p className="text-muted-foreground text-sm mb-6">
-            Join thousands of creators earning $$$ every day!
-          </p>
-
-          <form onSubmit={handleSignup} className="space-y-4">
-            <div>
-              <label className="text-xs font-medium text-muted-foreground mb-1.5 block">Email</label>
-              <input
-                type="email"
-                value={form.email}
-                onChange={(e) => setForm({ ...form, email: e.target.value })}
-                className="w-full h-11 px-4 rounded-xl bg-card border border-border text-sm text-foreground placeholder:text-muted-foreground outline-none focus:ring-2 focus:ring-ring transition-shadow"
-                placeholder="you@email.com"
-              />
+          <div>
+            <label className="text-sm font-semibold text-foreground mb-1.5 block">Confirm Password</label>
+            <div className="relative">
+              <input type={showConfirm ? "text" : "password"} placeholder="Create your password" className="w-full h-12 px-4 pr-12 rounded-xl bg-secondary text-foreground placeholder:text-muted-foreground outline-none focus:ring-2 focus:ring-ring text-sm" />
+              <button onClick={() => setShowConfirm(!showConfirm)} className="absolute right-4 top-1/2 -translate-y-1/2 text-muted-foreground">
+                {showConfirm ? <Eye size={18} /> : <EyeOff size={18} />}
+              </button>
             </div>
-            <div>
-              <label className="text-xs font-medium text-muted-foreground mb-1.5 block">Password</label>
-              <input
-                type="password"
-                value={form.password}
-                onChange={(e) => setForm({ ...form, password: e.target.value })}
-                className="w-full h-11 px-4 rounded-xl bg-card border border-border text-sm text-foreground placeholder:text-muted-foreground outline-none focus:ring-2 focus:ring-ring transition-shadow"
-                placeholder="••••••••"
-              />
-            </div>
-            <div>
-              <label className="text-xs font-medium text-muted-foreground mb-1.5 block">Confirm Password</label>
-              <input
-                type="password"
-                value={form.confirmPassword}
-                onChange={(e) => setForm({ ...form, confirmPassword: e.target.value })}
-                className="w-full h-11 px-4 rounded-xl bg-card border border-border text-sm text-foreground placeholder:text-muted-foreground outline-none focus:ring-2 focus:ring-ring transition-shadow"
-                placeholder="••••••••"
-              />
-            </div>
-
-            <button
-              type="submit"
-              className="w-full h-11 rounded-xl gradient-primary text-primary-foreground font-semibold text-sm tracking-wide hover:opacity-90 transition-opacity shadow-lg shadow-primary/20"
-            >
-              SIGN UP
-            </button>
-          </form>
-
-          <div className="flex items-center gap-3 my-6">
-            <div className="flex-1 h-px bg-border" />
-            <span className="text-xs text-muted-foreground">OR</span>
-            <div className="flex-1 h-px bg-border" />
           </div>
-
-          <div className="space-y-3">
-            <button className="w-full h-11 rounded-xl bg-card border border-border text-sm font-medium text-foreground hover:bg-muted transition-colors flex items-center justify-center gap-2">
-              Sign up with Google
-            </button>
-            <button className="w-full h-11 rounded-xl bg-card border border-border text-sm font-medium text-foreground hover:bg-muted transition-colors flex items-center justify-center gap-2">
-              Sign up with X
-            </button>
-          </div>
+        </div>
+        <div className="mt-8 space-y-3">
+          <button onClick={() => navigate("/home")} className="w-full h-14 rounded-full gradient-primary text-primary-foreground font-bold text-sm tracking-widest uppercase shadow-lg shadow-primary/30">SIGN UP</button>
+          <p className="text-center text-sm text-muted-foreground font-semibold">OR</p>
+          <button className="w-full h-12 rounded-full bg-white text-black font-bold text-sm flex items-center justify-center gap-3">
+            <span className="text-lg">G</span> Sign up with Google
+          </button>
+          <button className="w-full h-12 rounded-full bg-white text-black font-bold text-sm flex items-center justify-center gap-3">
+            <span className="text-lg font-black">𝕏</span> Sign up with X
+          </button>
+          <button onClick={() => navigate("/")} className="w-full text-center text-sm font-bold text-foreground tracking-widest uppercase py-2">BACK</button>
         </div>
       </motion.div>
     </div>

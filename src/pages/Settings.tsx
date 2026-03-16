@@ -1,16 +1,17 @@
 import { useNavigate } from "react-router-dom";
-import { ArrowLeft, ChevronRight, User, Shield, CreditCard, Megaphone, Users, Bell, Wallet, Monitor } from "lucide-react";
+import { ChevronRight, User, Shield, CreditCard, BarChart3, Users, Bell, Landmark, Monitor, Search } from "lucide-react";
 import AppLayout from "@/components/layout/AppLayout";
 
 const settingsItems = [
-  { label: "Your Account", description: "See information about your account, download an archive of your data, or learn about your account deactivation options.", icon: User, path: "/settings/account", hasChildren: true },
-  { label: "Privacy and Safety", description: "Manage your privacy settings and safety options.", icon: Shield, path: "/settings/privacy", hasChildren: true },
-  { label: "Subscriptions, Chat Prices and Packages", description: "", icon: CreditCard, path: null },
-  { label: "Promotions and Tracking", description: "", icon: Megaphone, path: null },
-  { label: "Fans and Following", description: "", icon: Users, path: null },
-  { label: "Your Notifications", description: "", icon: Bell, path: null },
-  { label: "Banking, Payouts", description: "", icon: Wallet, path: null },
-  { label: "Display", description: "", icon: Monitor, path: null },
+  { label: "Your Account", icon: User, path: "/settings/account" },
+  { label: "Privacy and Safety", icon: Shield, path: "/settings/privacy" },
+  { label: "Subscriptions, Chat Prices and Packages", icon: CreditCard, path: "/settings" },
+  { label: "Promotions and Tracking", icon: BarChart3, path: "/settings" },
+  { label: "Fans and Following", icon: Users, path: "/settings" },
+  { label: "Fans and Following", icon: Users, path: "/settings" },
+  { label: "Your Notifications", icon: Bell, path: "/settings" },
+  { label: "Banking, Payouts", icon: Landmark, path: "/settings" },
+  { label: "Display", icon: Monitor, path: "/settings" },
 ];
 
 const Settings = () => {
@@ -18,51 +19,48 @@ const Settings = () => {
 
   return (
     <AppLayout>
-      <div className="max-w-2xl mx-auto w-full">
-        {/* Header */}
-        <div className="flex items-center gap-3 px-5 py-5">
-          <button
-            onClick={() => navigate("/profile")}
-            className="w-8 h-8 rounded-lg flex items-center justify-center text-muted-foreground hover:text-foreground md:hidden"
-          >
-            <ArrowLeft size={20} />
-          </button>
-          <div className="flex items-center gap-3">
-            <h1 className="text-2xl font-bold text-foreground">Settings</h1>
+      <div className="flex h-full">
+        <div className="w-full md:w-[380px] md:border-r md:border-border shrink-0">
+          <div className="px-5 pt-6 pb-4 flex items-center gap-3">
+            <h1 className="text-2xl font-extrabold text-foreground tracking-tight">Settings</h1>
+            <Search size={18} className="text-muted-foreground" />
           </div>
-          <div className="ml-auto flex items-center gap-2">
-            <div className="w-8 h-8 rounded-full gradient-primary flex items-center justify-center">
-              <span className="text-primary-foreground text-xs font-bold">JD</span>
-            </div>
-            <span className="text-sm font-medium text-foreground hidden sm:block">Jane Doe</span>
+          <div className="space-y-1 px-3">
+            {settingsItems.map((item, i) => {
+              const Icon = item.icon;
+              return (
+                <button key={i} onClick={() => navigate(item.path)} className="w-full flex items-center gap-3 px-4 py-3.5 rounded-xl text-left hover:bg-card transition-colors group">
+                  <div className="w-8 h-8 rounded-lg bg-card border border-border flex items-center justify-center text-muted-foreground group-hover:text-foreground">
+                    <Icon size={16} />
+                  </div>
+                  <span className="flex-1 text-sm font-medium text-foreground">{item.label}</span>
+                  <ChevronRight size={16} className="text-muted-foreground" />
+                </button>
+              );
+            })}
           </div>
         </div>
-
-        {/* Items */}
-        <div className="px-3">
-          {settingsItems.map((item) => {
-            const Icon = item.icon;
-            return (
-              <button
-                key={item.label}
-                onClick={() => item.path && navigate(item.path)}
-                className="w-full flex items-start gap-4 px-4 py-4 rounded-xl text-left hover:bg-card transition-colors group"
-              >
-                <div className="w-9 h-9 rounded-lg bg-card border border-border flex items-center justify-center shrink-0 mt-0.5 group-hover:border-primary/30 transition-colors">
-                  <Icon size={18} className="text-muted-foreground group-hover:text-primary transition-colors" />
-                </div>
-                <div className="flex-1 min-w-0">
-                  <p className="text-sm font-semibold text-foreground">{item.label}</p>
-                  {item.description && (
-                    <p className="text-xs text-muted-foreground mt-0.5 leading-relaxed">{item.description}</p>
-                  )}
-                </div>
-                {item.hasChildren && (
-                  <ChevronRight size={16} className="text-muted-foreground mt-1 shrink-0" />
-                )}
+        <div className="hidden md:flex flex-1 flex-col">
+          <div className="px-6 pt-6 pb-4 flex items-center gap-3 border-b border-border">
+            <div className="w-10 h-10 rounded-full gradient-primary flex items-center justify-center">
+              <span className="text-primary-foreground text-xs font-bold">JD</span>
+            </div>
+            <span className="text-lg font-bold text-foreground">Jane Doe</span>
+          </div>
+          <div className="p-6">
+            <h2 className="text-xl font-bold text-foreground mb-2">Your Account</h2>
+            <p className="text-sm text-muted-foreground mb-6">See information about your account, download an archive of your data, or learn about your account deactivation options</p>
+            <div className="space-y-3">
+              <button onClick={() => navigate("/settings/account")} className="w-full flex items-center justify-between p-4 bg-card border border-border rounded-xl hover:bg-surface-hover transition-colors">
+                <div><h3 className="text-sm font-bold text-foreground">Account Information</h3><p className="text-xs text-muted-foreground mt-0.5">See your account information like your phone number and email address.</p></div>
+                <ChevronRight size={16} className="text-muted-foreground shrink-0 ml-4" />
               </button>
-            );
-          })}
+              <button onClick={() => navigate("/settings/password")} className="w-full flex items-center justify-between p-4 bg-card border border-border rounded-xl hover:bg-surface-hover transition-colors">
+                <div><h3 className="text-sm font-bold text-foreground">Change your Password</h3><p className="text-xs text-muted-foreground mt-0.5">You can change your password at any time you like.</p></div>
+                <ChevronRight size={16} className="text-muted-foreground shrink-0 ml-4" />
+              </button>
+            </div>
+          </div>
         </div>
       </div>
     </AppLayout>
