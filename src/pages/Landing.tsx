@@ -1,47 +1,69 @@
 import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
+import { MessageCircle } from "lucide-react";
+
+const avatars = [
+  { top: "12%", left: "15%", size: 72, ring: "border-cyan-400" },
+  { top: "8%", left: "55%", size: 56, ring: "border-orange-400" },
+  { top: "22%", left: "75%", size: 80, ring: "border-teal-400" },
+  { top: "35%", left: "8%", size: 64, ring: "border-blue-400" },
+  { top: "30%", left: "42%", size: 60, ring: "border-cyan-500" },
+  { top: "55%", left: "5%", size: 88, ring: "border-teal-300" },
+  { top: "58%", left: "50%", size: 68, ring: "border-cyan-400" },
+  { top: "52%", left: "80%", size: 56, ring: "border-orange-500" },
+  { top: "72%", left: "30%", size: 60, ring: "border-gray-500" },
+];
 
 const Landing = () => {
   const navigate = useNavigate();
 
   return (
-    <div className="min-h-screen flex flex-col items-center justify-center relative overflow-hidden">
-      {/* Background gradient orbs */}
-      <div className="absolute inset-0 overflow-hidden">
-        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-primary/20 rounded-full blur-[120px]" />
-        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-primary/10 rounded-full blur-[120px]" />
-      </div>
+    <div className="min-h-screen flex flex-col items-center justify-end relative overflow-hidden bg-background">
+      {/* Background blur overlay */}
+      <div className="absolute inset-0 bg-background/70" />
+      <div className="absolute top-0 left-0 right-0 h-1/2 bg-gradient-to-b from-background/40 to-background/80" />
 
+      {/* Floating avatar circles */}
+      {avatars.map((a, i) => (
+        <motion.div
+          key={i}
+          initial={{ opacity: 0, scale: 0.5 }}
+          animate={{ opacity: 0.8, scale: 1 }}
+          transition={{ duration: 0.6, delay: i * 0.08 }}
+          className={`absolute rounded-full border-2 ${a.ring} overflow-hidden bg-secondary`}
+          style={{ top: a.top, left: a.left, width: a.size, height: a.size }}
+        >
+          <div className="w-full h-full bg-gradient-to-br from-muted to-secondary" />
+        </motion.div>
+      ))}
+
+      {/* Center content */}
       <motion.div
-        initial={{ opacity: 0, y: 20 }}
+        initial={{ opacity: 0, y: 30 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6 }}
-        className="relative z-10 flex flex-col items-center gap-12 px-6"
+        transition={{ duration: 0.7, delay: 0.3 }}
+        className="relative z-10 flex flex-col items-center w-full px-8 pb-12"
+        style={{ marginTop: "auto" }}
       >
         {/* Logo */}
-        <div className="flex flex-col items-center gap-4">
-          <div className="w-20 h-20 rounded-2xl gradient-primary flex items-center justify-center shadow-2xl shadow-primary/30">
-            <span className="text-primary-foreground font-extrabold text-3xl">C</span>
-          </div>
-          <h1 className="text-5xl md:text-6xl font-extrabold tracking-tight gradient-text">
-            Chatabox
-          </h1>
-          <p className="text-muted-foreground text-center max-w-sm text-sm">
-            The premium platform for creators and their fans
-          </p>
+        <div className="w-16 h-16 rounded-2xl gradient-primary flex items-center justify-center mb-4 shadow-2xl shadow-primary/30">
+          <MessageCircle size={32} className="text-primary-foreground" fill="currentColor" />
         </div>
+        <h1 className="text-4xl md:text-5xl font-extrabold text-foreground tracking-tight mb-16">
+          Chatabox
+        </h1>
 
         {/* Buttons */}
-        <div className="flex flex-col gap-4 w-full max-w-xs">
+        <div className="flex flex-col gap-4 w-full max-w-sm">
           <button
             onClick={() => navigate("/signup")}
-            className="w-full h-12 rounded-xl gradient-primary text-primary-foreground font-semibold text-sm tracking-wide hover:opacity-90 transition-opacity shadow-lg shadow-primary/30"
+            className="w-full h-14 rounded-full gradient-primary text-primary-foreground font-bold text-sm tracking-widest uppercase hover:opacity-90 transition-opacity shadow-lg shadow-primary/30"
           >
             CREATOR SIGNUP
           </button>
           <button
             onClick={() => navigate("/login")}
-            className="w-full h-12 rounded-xl border border-border bg-card text-foreground font-semibold text-sm tracking-wide hover:bg-muted transition-colors"
+            className="w-full h-12 text-foreground font-bold text-sm tracking-widest uppercase hover:text-primary transition-colors"
           >
             LOGIN
           </button>
