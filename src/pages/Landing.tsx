@@ -7,6 +7,8 @@ import avatar3 from "@/assets/avatars/avatar-3.jpg";
 import avatar4 from "@/assets/avatars/avatar-4.jpg";
 import avatar5 from "@/assets/avatars/avatar-5.jpg";
 import avatar6 from "@/assets/avatars/avatar-6.jpg";
+import avatar7 from "@/assets/avatars/avatar-7.jpg";
+import avatar8 from "@/assets/avatars/avatar-8.jpg";
 
 const avatars = [
   { top: "12%", left: "15%", size: 72, ring: "border-cyan-400", img: avatar1 },
@@ -15,8 +17,8 @@ const avatars = [
   { top: "35%", left: "8%", size: 64, ring: "border-blue-400", img: avatar4 },
   { top: "30%", left: "42%", size: 60, ring: "border-cyan-500", img: avatar5 },
   { top: "55%", left: "5%", size: 88, ring: "border-teal-300", img: avatar6 },
-  { top: "58%", left: "50%", size: 68, ring: "border-cyan-400", img: avatar1 },
-  { top: "52%", left: "80%", size: 56, ring: "border-orange-500", img: avatar3 },
+  { top: "58%", left: "50%", size: 68, ring: "border-cyan-400", img: avatar7 },
+  { top: "52%", left: "80%", size: 56, ring: "border-orange-500", img: avatar8 },
   { top: "72%", left: "30%", size: 60, ring: "border-gray-500", img: avatar5 },
 ];
 
