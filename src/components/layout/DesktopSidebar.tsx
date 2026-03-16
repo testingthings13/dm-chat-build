@@ -17,7 +17,7 @@ const DesktopSidebar = () => {
     <aside className="hidden md:flex flex-col items-center w-[60px] bg-nav-rail border-r border-border shrink-0 h-full py-5 justify-between">
       {/* Logo */}
       <button onClick={() => navigate("/home")} className="mb-6">
-        <img src={logo} alt="Chatabox" className="w-10 h-10" />
+        <img src={logo} alt="DMchat" className="w-10 h-10" />
       </button>
 
       {/* Nav items */}
