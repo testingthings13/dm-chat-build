@@ -23,11 +23,21 @@ const ProfilePage = () => {
       <div className="max-w-lg mx-auto w-full pb-6">
         {/* Cover Image */}
         <div className="h-44 md:h-56 relative overflow-hidden">
-          <img
-            src={avatar1}
-            alt=""
-            className="w-full h-full object-cover object-top scale-110 blur-sm brightness-50"
-          />
+          {creator.coverImage ? (
+            <img
+              src={creator.coverImage}
+              alt=""
+              className="w-full h-full object-cover"
+            />
+          ) : creator.avatarImg ? (
+            <img
+              src={creator.avatarImg}
+              alt=""
+              className="w-full h-full object-cover object-top scale-110 blur-sm brightness-50"
+            />
+          ) : (
+            <div className="w-full h-full bg-gradient-to-br from-primary/30 via-primary/10 to-background" />
+          )}
           <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-background" />
         </div>
 

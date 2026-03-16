@@ -36,7 +36,13 @@ const CreatorProfile = () => {
     <div className="min-h-screen bg-background pb-20">
       {/* Cover Image */}
       <div className="h-52 md:h-64 relative overflow-hidden">
-        {creator.avatarImg ? (
+        {creator.coverImage ? (
+          <img
+            src={creator.coverImage}
+            alt=""
+            className="w-full h-full object-cover"
+          />
+        ) : creator.avatarImg ? (
           <img
             src={creator.avatarImg}
             alt=""
