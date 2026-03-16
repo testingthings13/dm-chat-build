@@ -1,8 +1,12 @@
 export interface User {
   id: string;
   name: string;
+  username: string;
   avatar: string;
   online: boolean;
+  isCreator?: boolean;
+  followers?: number;
+  bio?: string;
 }
 
 export interface Message {
@@ -11,6 +15,10 @@ export interface Message {
   text: string;
   timestamp: string;
   isOwn: boolean;
+  mediaUrl?: string;
+  mediaType?: "image" | "video";
+  isLocked?: boolean;
+  price?: number;
 }
 
 export interface Conversation {
@@ -19,114 +27,254 @@ export interface Conversation {
   lastMessage: string;
   lastMessageTime: string;
   unreadCount: number;
+  isTyping?: boolean;
   messages: Message[];
 }
 
+export interface SextingItem {
+  id: string;
+  text: string;
+  mediaUrl?: string;
+  price: number;
+  hasMedia: boolean;
+}
+
+export interface SextingScript {
+  id: string;
+  title: string;
+  votes: number;
+  description: string;
+  itemCount: number;
+  items: SextingItem[];
+  thumbnails: string[];
+}
+
+export interface Creator {
+  id: string;
+  name: string;
+  username: string;
+  avatar: string;
+  coverImage?: string;
+  online: boolean;
+  followers: number;
+  bio: string;
+  isSubscribed: boolean;
+  isFollowing: boolean;
+  subscriptionPrice?: number;
+}
+
+export interface GalleryItem {
+  id: string;
+  thumbnailUrl: string;
+  isLocked: boolean;
+  price: number;
+  type: "photo" | "video";
+}
+
 const users: User[] = [
-  { id: "1", name: "Sarah Chen", avatar: "SC", online: true },
-  { id: "2", name: "Marcus Johnson", avatar: "MJ", online: true },
-  { id: "3", name: "Emily Rodriguez", avatar: "ER", online: false },
-  { id: "4", name: "Alex Kim", avatar: "AK", online: true },
-  { id: "5", name: "Jordan Lee", avatar: "JL", online: false },
-  { id: "6", name: "Priya Sharma", avatar: "PS", online: true },
-  { id: "7", name: "David Park", avatar: "DP", online: false },
-  { id: "8", name: "Mia Thompson", avatar: "MT", online: true },
+  { id: "1", name: "Jamie O", username: "jamieo", avatar: "JO", online: true, isCreator: true, followers: 21000, bio: "Welcome to my Chatabox ✨" },
+  { id: "2", name: "Jammie", username: "jammie", avatar: "JM", online: true, isCreator: true },
+  { id: "3", name: "Spencer", username: "spencer", avatar: "SP", online: false, isCreator: true },
+  { id: "4", name: "Jewel Diamant", username: "jeweldiamant", avatar: "JD", online: true, isCreator: true },
+  { id: "5", name: "Gemma Vixen", username: "gemmavixen", avatar: "GV", online: true, isCreator: true },
+  { id: "6", name: "Lucy Diamant", username: "lucydiamant", avatar: "LD", online: false, isCreator: true },
+  { id: "me", name: "Jane Doe", username: "janedoe", avatar: "JD", online: true },
 ];
 
 export const conversations: Conversation[] = [
   {
     id: "1",
     user: users[0],
-    lastMessage: "Sure, I'll send the design files over by EOD!",
-    lastMessageTime: "2m",
+    lastMessage: "You have to check these out..",
+    lastMessageTime: "1 hour ago",
     unreadCount: 3,
     messages: [
-      { id: "m1", senderId: "1", text: "Hey! Did you get a chance to look at the new mockups?", timestamp: "10:30 AM", isOwn: false },
-      { id: "m2", senderId: "me", text: "Yes! They look fantastic. Love the new color scheme.", timestamp: "10:32 AM", isOwn: true },
-      { id: "m3", senderId: "1", text: "Great! I was thinking we could adjust the spacing on the cards a bit.", timestamp: "10:33 AM", isOwn: false },
-      { id: "m4", senderId: "me", text: "Agreed. Can you send me the updated Figma link?", timestamp: "10:35 AM", isOwn: true },
-      { id: "m5", senderId: "1", text: "Sure, I'll send the design files over by EOD!", timestamp: "10:36 AM", isOwn: false },
+      { id: "m1", senderId: "1", text: "Hey there 👋", timestamp: "12:30pm", isOwn: false },
+      { id: "m2", senderId: "1", text: "Damn, you really just popped up on my feed and ruined my focus", timestamp: "12:34pm", isOwn: false },
+      { id: "m3", senderId: "me", text: "Haha oops not sorry tho 😏", timestamp: "12:34pm", isOwn: true },
+      { id: "m4", senderId: "1", text: "I see that you always know exactly what you're doing, huh?", timestamp: "12:34pm", isOwn: false },
+      { id: "m5", senderId: "me", text: "Guilty 😈\nJust here to cause a little distraction", timestamp: "12:34pm", isOwn: true },
     ],
   },
   {
     id: "2",
     user: users[1],
-    lastMessage: "The deployment went smoothly 🚀",
-    lastMessageTime: "15m",
+    lastMessage: "How has your day been today..",
+    lastMessageTime: "1 hour ago",
     unreadCount: 0,
     messages: [
-      { id: "m6", senderId: "2", text: "Hey, the CI pipeline is green now.", timestamp: "9:45 AM", isOwn: false },
-      { id: "m7", senderId: "me", text: "Nice work! Should we push to staging?", timestamp: "9:50 AM", isOwn: true },
-      { id: "m8", senderId: "2", text: "The deployment went smoothly 🚀", timestamp: "10:21 AM", isOwn: false },
+      { id: "m6", senderId: "2", text: "Hey babe! How's it going?", timestamp: "11:00am", isOwn: false },
+      { id: "m7", senderId: "me", text: "Pretty good! Just chilling", timestamp: "11:15am", isOwn: true },
+      { id: "m8", senderId: "2", text: "How has your day been today..", timestamp: "11:30am", isOwn: false },
     ],
   },
   {
     id: "3",
-    user: users[2],
-    lastMessage: "Let's sync tomorrow at 2pm",
-    lastMessageTime: "1h",
+    user: { ...users[1], id: "3b", name: "Jammie" },
+    lastMessage: "OMG that was amazing vid..",
+    lastMessageTime: "1 hour ago",
     unreadCount: 1,
     messages: [
-      { id: "m9", senderId: "3", text: "We need to discuss the Q2 roadmap.", timestamp: "9:00 AM", isOwn: false },
-      { id: "m10", senderId: "me", text: "Absolutely. When works for you?", timestamp: "9:15 AM", isOwn: true },
-      { id: "m11", senderId: "3", text: "Let's sync tomorrow at 2pm", timestamp: "9:20 AM", isOwn: false },
+      { id: "m9", senderId: "3b", text: "OMG that was amazing vid..", timestamp: "10:00am", isOwn: false },
     ],
   },
   {
     id: "4",
-    user: users[3],
-    lastMessage: "I'll review the PR this afternoon",
-    lastMessageTime: "2h",
+    user: { id: "4b", name: "Dude", username: "dude", avatar: "DU", online: true },
+    lastMessage: "Dude is typing...",
+    lastMessageTime: "now",
     unreadCount: 0,
+    isTyping: true,
     messages: [
-      { id: "m12", senderId: "me", text: "Hey Alex, I opened a PR for the auth module.", timestamp: "8:30 AM", isOwn: true },
-      { id: "m13", senderId: "4", text: "I'll review the PR this afternoon", timestamp: "8:45 AM", isOwn: false },
+      { id: "m10", senderId: "me", text: "Yo what's up?", timestamp: "9:30am", isOwn: true },
     ],
   },
   {
     id: "5",
-    user: users[4],
-    lastMessage: "Thanks for the feedback!",
-    lastMessageTime: "3h",
+    user: { ...users[1], id: "5b", name: "Jammie" },
+    lastMessage: "You there babe, wanted to ask..",
+    lastMessageTime: "1 hour ago",
     unreadCount: 0,
     messages: [
-      { id: "m14", senderId: "5", text: "Can you review my latest blog draft?", timestamp: "Yesterday", isOwn: false },
-      { id: "m15", senderId: "me", text: "Sure! I left some comments on the doc.", timestamp: "Yesterday", isOwn: true },
-      { id: "m16", senderId: "5", text: "Thanks for the feedback!", timestamp: "7:30 AM", isOwn: false },
+      { id: "m11", senderId: "5b", text: "You there babe, wanted to ask..", timestamp: "8:30am", isOwn: false },
     ],
   },
   {
     id: "6",
-    user: users[5],
-    lastMessage: "The API integration is done ✅",
-    lastMessageTime: "5h",
-    unreadCount: 2,
+    user: { ...users[1], id: "6b", name: "Jammie" },
+    lastMessage: "That outfit is looking great on..",
+    lastMessageTime: "1 hour ago",
+    unreadCount: 0,
     messages: [
-      { id: "m17", senderId: "6", text: "Working on the Stripe integration today.", timestamp: "Yesterday", isOwn: false },
-      { id: "m18", senderId: "me", text: "Let me know if you need help with the webhooks.", timestamp: "Yesterday", isOwn: true },
-      { id: "m19", senderId: "6", text: "The API integration is done ✅", timestamp: "5:00 AM", isOwn: false },
+      { id: "m12", senderId: "6b", text: "That outfit is looking great on..", timestamp: "8:00am", isOwn: false },
     ],
   },
   {
     id: "7",
-    user: users[6],
-    lastMessage: "See you at standup",
-    lastMessageTime: "1d",
-    unreadCount: 0,
+    user: { ...users[1], id: "7b", name: "Jammie" },
+    lastMessage: "Damn, you are unreal",
+    lastMessageTime: "1 hour ago",
+    unreadCount: 2,
     messages: [
-      { id: "m20", senderId: "7", text: "See you at standup", timestamp: "Yesterday", isOwn: false },
-    ],
-  },
-  {
-    id: "8",
-    user: users[7],
-    lastMessage: "Can we pair on this bug?",
-    lastMessageTime: "1d",
-    unreadCount: 1,
-    messages: [
-      { id: "m21", senderId: "8", text: "There's a weird rendering issue on mobile.", timestamp: "Yesterday", isOwn: false },
-      { id: "m22", senderId: "me", text: "What browser?", timestamp: "Yesterday", isOwn: true },
-      { id: "m23", senderId: "8", text: "Can we pair on this bug?", timestamp: "Yesterday", isOwn: false },
+      { id: "m13", senderId: "7b", text: "Damn, you are unreal", timestamp: "7:00am", isOwn: false },
     ],
   },
 ];
+
+export const creators: Creator[] = [
+  {
+    id: "1",
+    name: "Sarah McDonals",
+    username: "sarahmc",
+    avatar: "SM",
+    online: true,
+    followers: 21000,
+    bio: "Welcome to my Chatabox, I run this account on my own and reply to all your lovely messages.",
+    isSubscribed: true,
+    isFollowing: true,
+    subscriptionPrice: 9.99,
+  },
+  {
+    id: "2",
+    name: "Spencer",
+    username: "spencer",
+    avatar: "SP",
+    online: true,
+    followers: 15000,
+    bio: "Your favorite content creator 💋",
+    isSubscribed: false,
+    isFollowing: false,
+    subscriptionPrice: 14.99,
+  },
+  {
+    id: "3",
+    name: "Jewel Diamant",
+    username: "jeweldiamant",
+    avatar: "JD",
+    online: false,
+    followers: 8500,
+    bio: "Exclusive content just for you ✨",
+    isSubscribed: true,
+    isFollowing: true,
+    subscriptionPrice: 12.99,
+  },
+  {
+    id: "4",
+    name: "Gemma Vixen",
+    username: "gemmavixen",
+    avatar: "GV",
+    online: true,
+    followers: 32000,
+    bio: "Come play with me 🔥",
+    isSubscribed: false,
+    isFollowing: true,
+    subscriptionPrice: 19.99,
+  },
+  {
+    id: "5",
+    name: "Lucy Diamant",
+    username: "lucydiamant",
+    avatar: "LD",
+    online: true,
+    followers: 12000,
+    bio: "New content daily 💕",
+    isSubscribed: true,
+    isFollowing: true,
+    subscriptionPrice: 7.99,
+  },
+];
+
+export const sextingScripts: SextingScript[] = [
+  {
+    id: "1",
+    title: "Sexting Script",
+    votes: 69,
+    description: "This is a mock sexting set with 22 items",
+    itemCount: 22,
+    items: Array.from({ length: 22 }, (_, i) => ({
+      id: `item-${i + 1}`,
+      text: `This is some mock text for item ${i + 1} that the user can read and see if they really like it`,
+      price: 20.0,
+      hasMedia: i % 3 === 0,
+    })),
+    thumbnails: ["1", "2", "3", "4", "5", "6"],
+  },
+  {
+    id: "2",
+    title: "Sexting Script",
+    votes: 69,
+    description: "This is a mock sexting set with 22 items",
+    itemCount: 22,
+    items: Array.from({ length: 22 }, (_, i) => ({
+      id: `item-${i + 1}`,
+      text: `This is some mock text for item ${i + 1} that the user can read and see if they really like it`,
+      price: 20.0,
+      hasMedia: i % 3 === 0,
+    })),
+    thumbnails: ["1", "2", "3", "4", "5", "6"],
+  },
+  {
+    id: "3",
+    title: "Sexting Script",
+    votes: 69,
+    description: "This is a mock sexting set with 22 items",
+    itemCount: 22,
+    items: Array.from({ length: 22 }, (_, i) => ({
+      id: `item-${i + 1}`,
+      text: `This is some mock text for item ${i + 1} that the user can read and see if they really like it`,
+      price: 20.0,
+      hasMedia: i % 3 === 0,
+    })),
+    thumbnails: ["1", "2", "3", "4", "5", "6"],
+  },
+];
+
+export const galleryItems: GalleryItem[] = Array.from({ length: 12 }, (_, i) => ({
+  id: `g-${i + 1}`,
+  thumbnailUrl: "",
+  isLocked: i % 2 === 0,
+  price: 35.50,
+  type: i % 4 === 0 ? "video" as const : "photo" as const,
+}));
+
+export const currentUser: User = users[users.length - 1];
