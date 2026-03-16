@@ -288,7 +288,7 @@ export const sextingScripts: SextingScript[] = [
       price: 20.0,
       hasMedia: i % 3 === 0,
     })),
-    thumbnails: ["1", "2", "3", "4", "5", "6"],
+    thumbnails: [gallery5, gallery6, gallery7, gallery8, gallery9, gallery10],
   },
   {
     id: "3",
