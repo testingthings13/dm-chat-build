@@ -3,7 +3,6 @@ import { useNavigate, useLocation } from "react-router-dom";
 import logo from "@/assets/logo.png";
 
 const mainNav = [
-  { id: "chat", icon: MessageCircle, path: "/home" },
   { id: "home", icon: Home, path: "/home" },
   { id: "sexting", icon: Users, path: "/sexting" },
   { id: "box", icon: Box, path: "/box" },
@@ -18,14 +17,12 @@ const DesktopSidebar = () => {
     <aside className="hidden md:flex flex-col items-center w-[60px] bg-nav-rail border-r border-border shrink-0 h-full py-5 justify-between">
       {/* Logo */}
       <button onClick={() => navigate("/home")} className="mb-6">
-        <div className="w-10 h-10 rounded-xl flex items-center justify-center">
-          <img src={logo} alt="DMchat" className="w-10 h-10" />
-        </div>
+        <img src={logo} alt="Chatabox" className="w-10 h-10" />
       </button>
 
       {/* Nav items */}
       <nav className="flex-1 flex flex-col items-center gap-2">
-        {mainNav.slice(1).map((item) => {
+        {mainNav.map((item) => {
           const Icon = item.icon;
           const isActive = location.pathname.startsWith(item.path);
           return (
@@ -48,7 +45,7 @@ const DesktopSidebar = () => {
         <button
           onClick={() => navigate("/home")}
           className={`w-10 h-10 rounded-xl flex items-center justify-center transition-all duration-200 ${
-            location.pathname.startsWith("/chat")
+            location.pathname.startsWith("/chat") || location.pathname === "/home"
               ? "gradient-primary text-primary-foreground shadow-lg shadow-primary/25"
               : "text-nav-rail-foreground hover:text-foreground hover:bg-secondary"
           }`}

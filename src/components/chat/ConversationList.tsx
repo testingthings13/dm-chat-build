@@ -12,7 +12,7 @@ const ConversationList = ({ conversations, activeId, onSelect }: ConversationLis
     <div className="flex flex-col w-[320px] bg-card border-r border-border shrink-0 h-full">
       {/* Header */}
       <div className="px-5 pt-5 pb-3">
-        <h1 className="text-xl font-semibold text-foreground tracking-tight">DMchat</h1>
+        <h1 className="text-xl font-semibold text-foreground tracking-tight">Chatabox</h1>
       </div>
 
       {/* Search */}
@@ -41,10 +41,14 @@ const ConversationList = ({ conversations, activeId, onSelect }: ConversationLis
             >
               {/* Avatar */}
               <div className="relative shrink-0">
-                <div className={`w-10 h-10 rounded-full flex items-center justify-center text-sm font-medium ${
+                <div className={`w-10 h-10 rounded-full flex items-center justify-center text-sm font-medium overflow-hidden ${
                   isActive ? "bg-primary text-primary-foreground" : "bg-muted text-muted-foreground"
                 }`}>
-                  {conv.user.avatar}
+                  {conv.user.avatarImg ? (
+                    <img src={conv.user.avatarImg} alt={conv.user.name} className="w-full h-full object-cover" />
+                  ) : (
+                    conv.user.avatar
+                  )}
                 </div>
                 {conv.user.online && (
                   <span className="absolute bottom-0 right-0 w-3 h-3 bg-online rounded-full border-2 border-card" />

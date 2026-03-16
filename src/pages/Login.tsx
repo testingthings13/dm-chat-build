@@ -18,9 +18,9 @@ const Login = () => {
         className="relative z-10 flex flex-col flex-1 px-6 pt-12 pb-6 max-w-md mx-auto w-full"
       >
         <div className="flex flex-col items-center mb-10">
-          <img src={logo} alt="DMchat" className="w-16 h-16 mb-4" />
+          <img src={logo} alt="Chatabox" className="w-16 h-16 mb-4" />
           <h1 className="text-3xl font-extrabold text-foreground">Welcome Back</h1>
-          <p className="text-sm text-muted-foreground mt-1">Log in to your DMchat account</p>
+          <p className="text-sm text-muted-foreground mt-1">Log in to your Chatabox account</p>
         </div>
         <div className="space-y-4 flex-1">
           <div>

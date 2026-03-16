@@ -19,7 +19,7 @@ const NavRail = ({ activeTab, onTabChange }: NavRailProps) => {
       <div className="flex flex-col items-center gap-1">
         {/* Logo */}
         <div className="w-10 h-10 rounded-lg flex items-center justify-center mb-6">
-          <img src={logo} alt="DMchat" className="w-10 h-10" />
+          <img src={logo} alt="Chatabox" className="w-10 h-10" />
         </div>
 
         {/* Nav items */}
