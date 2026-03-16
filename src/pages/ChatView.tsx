@@ -24,7 +24,11 @@ const ChatView = () => {
           <div className="flex items-center gap-3">
             <button onClick={() => navigate("/home")} className="md:hidden text-muted-foreground hover:text-foreground"><ArrowLeft size={20} /></button>
             <div className="w-10 h-10 rounded-full bg-secondary flex items-center justify-center overflow-hidden">
-              <span className="text-sm font-bold text-muted-foreground">{user.avatar}</span>
+              {user.avatarImg ? (
+                <img src={user.avatarImg} alt={user.name} className="w-full h-full object-cover" />
+              ) : (
+                <span className="text-sm font-bold text-muted-foreground">{user.avatar}</span>
+              )}
             </div>
             <h2 className="text-lg font-bold text-foreground">{user.name}</h2>
           </div>

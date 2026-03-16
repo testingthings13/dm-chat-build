@@ -59,7 +59,11 @@ const Home = () => {
               {/* Avatar */}
               <div className="relative shrink-0">
                 <div className="w-12 h-12 rounded-full bg-secondary flex items-center justify-center text-sm font-bold text-muted-foreground overflow-hidden">
-                  {conv.user.avatar}
+                  {conv.user.avatarImg ? (
+                    <img src={conv.user.avatarImg} alt={conv.user.name} className="w-full h-full object-cover" />
+                  ) : (
+                    conv.user.avatar
+                  )}
                 </div>
                 {conv.user.online && (
                   <span className="absolute bottom-0 right-0 w-3 h-3 bg-online rounded-full border-2 border-background" />

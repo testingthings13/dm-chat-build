@@ -1,8 +1,20 @@
+import avatar1 from "@/assets/avatars/avatar-1.jpg";
+import avatar2 from "@/assets/avatars/avatar-2.jpg";
+import avatar3 from "@/assets/avatars/avatar-3.jpg";
+import avatar4 from "@/assets/avatars/avatar-4.jpg";
+import avatar5 from "@/assets/avatars/avatar-5.jpg";
+import avatar6 from "@/assets/avatars/avatar-6.jpg";
+import gallery1 from "@/assets/gallery/gallery-1.jpg";
+import gallery2 from "@/assets/gallery/gallery-2.jpg";
+import gallery3 from "@/assets/gallery/gallery-3.jpg";
+import gallery4 from "@/assets/gallery/gallery-4.jpg";
+
 export interface User {
   id: string;
   name: string;
   username: string;
   avatar: string;
+  avatarImg?: string;
   online: boolean;
   isCreator?: boolean;
   followers?: number;
@@ -54,6 +66,7 @@ export interface Creator {
   name: string;
   username: string;
   avatar: string;
+  avatarImg?: string;
   coverImage?: string;
   online: boolean;
   followers: number;
@@ -71,13 +84,16 @@ export interface GalleryItem {
   type: "photo" | "video";
 }
 
+const avatarImages = [avatar1, avatar2, avatar3, avatar4, avatar5, avatar6];
+export const galleryImages = [gallery1, gallery2, gallery3, gallery4];
+
 const users: User[] = [
-  { id: "1", name: "Jamie O", username: "jamieo", avatar: "JO", online: true, isCreator: true, followers: 21000, bio: "Welcome to my Chatabox ✨" },
-  { id: "2", name: "Jammie", username: "jammie", avatar: "JM", online: true, isCreator: true },
-  { id: "3", name: "Spencer", username: "spencer", avatar: "SP", online: false, isCreator: true },
-  { id: "4", name: "Jewel Diamant", username: "jeweldiamant", avatar: "JD", online: true, isCreator: true },
-  { id: "5", name: "Gemma Vixen", username: "gemmavixen", avatar: "GV", online: true, isCreator: true },
-  { id: "6", name: "Lucy Diamant", username: "lucydiamant", avatar: "LD", online: false, isCreator: true },
+  { id: "1", name: "Jamie O", username: "jamieo", avatar: "JO", avatarImg: avatar1, online: true, isCreator: true, followers: 21000, bio: "Welcome to my Chatabox ✨" },
+  { id: "2", name: "Jammie", username: "jammie", avatar: "JM", avatarImg: avatar2, online: true, isCreator: true },
+  { id: "3", name: "Spencer", username: "spencer", avatar: "SP", avatarImg: avatar3, online: false, isCreator: true },
+  { id: "4", name: "Jewel Diamant", username: "jeweldiamant", avatar: "JD", avatarImg: avatar4, online: true, isCreator: true },
+  { id: "5", name: "Gemma Vixen", username: "gemmavixen", avatar: "GV", avatarImg: avatar5, online: true, isCreator: true },
+  { id: "6", name: "Lucy Diamant", username: "lucydiamant", avatar: "LD", avatarImg: avatar6, online: false, isCreator: true },
   { id: "me", name: "Jane Doe", username: "janedoe", avatar: "JD", online: true },
 ];
 
@@ -110,7 +126,7 @@ export const conversations: Conversation[] = [
   },
   {
     id: "3",
-    user: { ...users[1], id: "3b", name: "Jammie" },
+    user: { ...users[2], id: "3b", name: "Spencer" },
     lastMessage: "OMG that was amazing vid..",
     lastMessageTime: "1 hour ago",
     unreadCount: 1,
@@ -120,7 +136,7 @@ export const conversations: Conversation[] = [
   },
   {
     id: "4",
-    user: { id: "4b", name: "Dude", username: "dude", avatar: "DU", online: true },
+    user: { id: "4b", name: "Dude", username: "dude", avatar: "DU", avatarImg: avatar4, online: true },
     lastMessage: "Dude is typing...",
     lastMessageTime: "now",
     unreadCount: 0,
@@ -131,7 +147,7 @@ export const conversations: Conversation[] = [
   },
   {
     id: "5",
-    user: { ...users[1], id: "5b", name: "Jammie" },
+    user: { ...users[4], id: "5b", name: "Gemma Vixen" },
     lastMessage: "You there babe, wanted to ask..",
     lastMessageTime: "1 hour ago",
     unreadCount: 0,
@@ -141,7 +157,7 @@ export const conversations: Conversation[] = [
   },
   {
     id: "6",
-    user: { ...users[1], id: "6b", name: "Jammie" },
+    user: { ...users[5], id: "6b", name: "Lucy Diamant" },
     lastMessage: "That outfit is looking great on..",
     lastMessageTime: "1 hour ago",
     unreadCount: 0,
@@ -151,7 +167,7 @@ export const conversations: Conversation[] = [
   },
   {
     id: "7",
-    user: { ...users[1], id: "7b", name: "Jammie" },
+    user: { ...users[3], id: "7b", name: "Jewel Diamant" },
     lastMessage: "Damn, you are unreal",
     lastMessageTime: "1 hour ago",
     unreadCount: 2,
@@ -167,6 +183,7 @@ export const creators: Creator[] = [
     name: "Sarah McDonals",
     username: "sarahmc",
     avatar: "SM",
+    avatarImg: avatar1,
     online: true,
     followers: 21000,
     bio: "Welcome to my Chatabox, I run this account on my own and reply to all your lovely messages.",
@@ -179,6 +196,7 @@ export const creators: Creator[] = [
     name: "Spencer",
     username: "spencer",
     avatar: "SP",
+    avatarImg: avatar3,
     online: true,
     followers: 15000,
     bio: "Your favorite content creator 💋",
@@ -191,6 +209,7 @@ export const creators: Creator[] = [
     name: "Jewel Diamant",
     username: "jeweldiamant",
     avatar: "JD",
+    avatarImg: avatar4,
     online: false,
     followers: 8500,
     bio: "Exclusive content just for you ✨",
@@ -203,6 +222,7 @@ export const creators: Creator[] = [
     name: "Gemma Vixen",
     username: "gemmavixen",
     avatar: "GV",
+    avatarImg: avatar5,
     online: true,
     followers: 32000,
     bio: "Come play with me 🔥",
@@ -215,6 +235,7 @@ export const creators: Creator[] = [
     name: "Lucy Diamant",
     username: "lucydiamant",
     avatar: "LD",
+    avatarImg: avatar6,
     online: true,
     followers: 12000,
     bio: "New content daily 💕",
@@ -271,7 +292,7 @@ export const sextingScripts: SextingScript[] = [
 
 export const galleryItems: GalleryItem[] = Array.from({ length: 12 }, (_, i) => ({
   id: `g-${i + 1}`,
-  thumbnailUrl: "",
+  thumbnailUrl: galleryImages[i % galleryImages.length],
   isLocked: i % 2 === 0,
   price: 35.50,
   type: i % 4 === 0 ? "video" as const : "photo" as const,
