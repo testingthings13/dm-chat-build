@@ -49,7 +49,7 @@ const SettingsAccount = () => {
             {settingsItems.map((item, i) => {
               const Icon = item.icon;
               return (
-                <button key={i} onClick={() => navigate(item.path)} className={`w-full flex items-center gap-3 px-4 py-3.5 rounded-xl text-left transition-colors group ${item.active ? "bg-card" : "hover:bg-card"}`}>
+                <button key={i} onClick={() => navigate(item.path)} className={`w-full flex items-center gap-3 px-4 py-3.5 rounded-xl text-left transition-colors group ${item.path === "/settings/account" ? "bg-card" : "hover:bg-card"}`}>
                   <div className="w-8 h-8 rounded-lg bg-card border border-border flex items-center justify-center text-muted-foreground group-hover:text-foreground">
                     <Icon size={16} />
                   </div>
