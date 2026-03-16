@@ -21,7 +21,7 @@ const Login = () => {
             <MessageCircle size={32} className="text-primary-foreground" fill="currentColor" />
           </div>
           <h1 className="text-3xl font-extrabold text-foreground">Welcome Back</h1>
-          <p className="text-sm text-muted-foreground mt-1">Log in to your Chatabox account</p>
+          <p className="text-sm text-muted-foreground mt-1">Log in to your DMchat account</p>
         </div>
         <div className="space-y-4 flex-1">
           <div>

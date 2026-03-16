@@ -54,7 +54,7 @@ const Landing = () => {
           <MessageCircle size={32} className="text-primary-foreground" fill="currentColor" />
         </div>
         <h1 className="text-4xl md:text-5xl font-extrabold text-foreground tracking-tight mb-16">
-          Chatabox
+          DMchat
         </h1>
 
         <div className="flex flex-col gap-4 w-full max-w-sm">

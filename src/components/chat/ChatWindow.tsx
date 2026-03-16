@@ -15,9 +15,9 @@ const ChatWindow = ({ conversation }: ChatWindowProps) => {
       <div className="flex-1 flex items-center justify-center bg-background">
         <div className="text-center">
           <div className="w-16 h-16 rounded-2xl bg-primary/10 flex items-center justify-center mx-auto mb-4">
-            <span className="text-primary font-bold text-2xl">CB</span>
+            <span className="text-primary font-bold text-2xl">DM</span>
           </div>
-          <h2 className="text-lg font-semibold text-foreground">Welcome to Chatabox</h2>
+          <h2 className="text-lg font-semibold text-foreground">Welcome to DMchat</h2>
           <p className="text-sm text-muted-foreground mt-1">Select a conversation to start messaging</p>
         </div>
       </div>
