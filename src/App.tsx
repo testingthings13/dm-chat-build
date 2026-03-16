@@ -19,6 +19,12 @@ import Settings from "./pages/Settings";
 import SettingsAccount from "./pages/SettingsAccount";
 import SettingsPassword from "./pages/SettingsPassword";
 import SettingsPrivacy from "./pages/SettingsPrivacy";
+import SettingsSubscriptions from "./pages/SettingsSubscriptions";
+import SettingsPromotions from "./pages/SettingsPromotions";
+import SettingsFans from "./pages/SettingsFans";
+import SettingsNotifications from "./pages/SettingsNotifications";
+import SettingsBanking from "./pages/SettingsBanking";
+import SettingsDisplay from "./pages/SettingsDisplay";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -46,6 +52,12 @@ const App = () => (
           <Route path="/settings/account" element={<SettingsAccount />} />
           <Route path="/settings/password" element={<SettingsPassword />} />
           <Route path="/settings/privacy" element={<SettingsPrivacy />} />
+          <Route path="/settings/subscriptions" element={<SettingsSubscriptions />} />
+          <Route path="/settings/promotions" element={<SettingsPromotions />} />
+          <Route path="/settings/fans" element={<SettingsFans />} />
+          <Route path="/settings/notifications" element={<SettingsNotifications />} />
+          <Route path="/settings/banking" element={<SettingsBanking />} />
+          <Route path="/settings/display" element={<SettingsDisplay />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>

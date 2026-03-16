@@ -3,16 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { ArrowLeft, ChevronRight, User, Shield, CreditCard, BarChart3, Users, Bell, Landmark, Monitor, Search } from "lucide-react";
 import AppLayout from "@/components/layout/AppLayout";
 
-const settingsItems = [
-  { label: "Your Account", icon: User, path: "/settings/account", active: true },
-  { label: "Privacy and Safety", icon: Shield, path: "/settings/privacy" },
-  { label: "Subscriptions, Chat Prices and Packages", icon: CreditCard, path: "/settings" },
-  { label: "Promotions and Tracking", icon: BarChart3, path: "/settings" },
-  { label: "Fans and Following", icon: Users, path: "/settings" },
-  { label: "Your Notifications", icon: Bell, path: "/settings" },
-  { label: "Banking, Payouts", icon: Landmark, path: "/settings" },
-  { label: "Display", icon: Monitor, path: "/settings" },
-];
+import { settingsItems } from "@/components/settings/SettingsLayout";
 
 const SettingsAccount = () => {
   const navigate = useNavigate();
@@ -58,7 +49,7 @@ const SettingsAccount = () => {
             {settingsItems.map((item, i) => {
               const Icon = item.icon;
               return (
-                <button key={i} onClick={() => navigate(item.path)} className={`w-full flex items-center gap-3 px-4 py-3.5 rounded-xl text-left transition-colors group ${item.active ? "bg-card" : "hover:bg-card"}`}>
+                <button key={i} onClick={() => navigate(item.path)} className={`w-full flex items-center gap-3 px-4 py-3.5 rounded-xl text-left transition-colors group ${item.path === "/settings/account" ? "bg-card" : "hover:bg-card"}`}>
                   <div className="w-8 h-8 rounded-lg bg-card border border-border flex items-center justify-center text-muted-foreground group-hover:text-foreground">
                     <Icon size={16} />
                   </div>
