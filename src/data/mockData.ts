@@ -8,6 +8,11 @@ import gallery1 from "@/assets/gallery/gallery-1.jpg";
 import gallery2 from "@/assets/gallery/gallery-2.jpg";
 import gallery3 from "@/assets/gallery/gallery-3.jpg";
 import gallery4 from "@/assets/gallery/gallery-4.jpg";
+import cover1 from "@/assets/covers/cover-1.jpg";
+import cover2 from "@/assets/covers/cover-2.jpg";
+import cover3 from "@/assets/covers/cover-3.jpg";
+import cover4 from "@/assets/covers/cover-4.jpg";
+import cover5 from "@/assets/covers/cover-5.jpg";
 
 export interface User {
   id: string;
@@ -184,6 +189,7 @@ export const creators: Creator[] = [
     username: "sarahmc",
     avatar: "SM",
     avatarImg: avatar1,
+    coverImage: cover1,
     online: true,
     followers: 21000,
     bio: "Welcome to my Chatabox, I run this account on my own and reply to all your lovely messages.",
@@ -197,6 +203,7 @@ export const creators: Creator[] = [
     username: "spencer",
     avatar: "SP",
     avatarImg: avatar3,
+    coverImage: cover2,
     online: true,
     followers: 15000,
     bio: "Your favorite content creator 💋",
@@ -210,6 +217,7 @@ export const creators: Creator[] = [
     username: "jeweldiamant",
     avatar: "JD",
     avatarImg: avatar4,
+    coverImage: cover3,
     online: false,
     followers: 8500,
     bio: "Exclusive content just for you ✨",
@@ -223,6 +231,7 @@ export const creators: Creator[] = [
     username: "gemmavixen",
     avatar: "GV",
     avatarImg: avatar5,
+    coverImage: cover4,
     online: true,
     followers: 32000,
     bio: "Come play with me 🔥",
@@ -236,6 +245,7 @@ export const creators: Creator[] = [
     username: "lucydiamant",
     avatar: "LD",
     avatarImg: avatar6,
+    coverImage: cover5,
     online: true,
     followers: 12000,
     bio: "New content daily 💕",
