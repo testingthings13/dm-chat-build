@@ -76,9 +76,17 @@ const Home = () => {
                     isActive ? "bg-card/80" : "hover:bg-card/60 active:bg-card"
                   }`}
                 >
-                  {/* Avatar */}
+                  {/* Avatar - clickable to profile */}
                   <div className="relative shrink-0">
-                    <div className="w-12 h-12 rounded-full bg-secondary flex items-center justify-center text-sm font-bold text-muted-foreground overflow-hidden">
+                    <div
+                      className="w-12 h-12 rounded-full bg-secondary flex items-center justify-center text-sm font-bold text-muted-foreground overflow-hidden cursor-pointer hover:ring-2 hover:ring-primary/50 transition-all"
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        if (conv.user.isCreator) {
+                          navigate(`/creator/${conv.user.id}`);
+                        }
+                      }}
+                    >
                       {conv.user.avatarImg ? (
                         <img src={conv.user.avatarImg} alt={conv.user.name} className="w-full h-full object-cover" />
                       ) : (
@@ -123,7 +131,14 @@ const Home = () => {
             <>
               {/* Chat header - large name + icons like Figma */}
               <div className="flex items-center justify-between px-6 py-4 border-b border-border shrink-0">
-                <div className="flex items-center gap-3">
+                <div
+                  className="flex items-center gap-3 cursor-pointer hover:opacity-80 transition-opacity"
+                  onClick={() => {
+                    if (selectedConv.user.isCreator) {
+                      navigate(`/creator/${selectedConv.user.id}`);
+                    }
+                  }}
+                >
                   <div className="w-10 h-10 rounded-full bg-secondary overflow-hidden flex items-center justify-center">
                     {selectedConv.user.avatarImg ? (
                       <img src={selectedConv.user.avatarImg} alt={selectedConv.user.name} className="w-full h-full object-cover" />
