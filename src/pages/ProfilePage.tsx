@@ -6,7 +6,6 @@ import gallery1 from "@/assets/gallery/gallery-1.jpg";
 import gallery2 from "@/assets/gallery/gallery-2.jpg";
 import gallery3 from "@/assets/gallery/gallery-3.jpg";
 import gallery4 from "@/assets/gallery/gallery-4.jpg";
-import avatar1 from "@/assets/avatars/avatar-1.jpg";
 
 const mockPosts = [
   { id: "p1", imageUrl: gallery3, caption: "I can't wait to actually proper shot again" },
