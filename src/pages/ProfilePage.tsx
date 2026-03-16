@@ -1,18 +1,8 @@
 import { useNavigate } from "react-router-dom";
-import { BadgeCheck, Inbox, Bell, Settings, User } from "lucide-react";
+import { BadgeCheck, Inbox, Bell, Settings, User, Camera, Edit } from "lucide-react";
 import { creators } from "@/data/mockData";
 import AppLayout from "@/components/layout/AppLayout";
-import gallery1 from "@/assets/gallery/gallery-1.jpg";
-import gallery2 from "@/assets/gallery/gallery-2.jpg";
-import gallery3 from "@/assets/gallery/gallery-3.jpg";
-import gallery4 from "@/assets/gallery/gallery-4.jpg";
-
-const mockPosts = [
-  { id: "p1", imageUrl: gallery3, caption: "I can't wait to actually proper shot again" },
-  { id: "p2", imageUrl: gallery2, caption: "Something special coming soon 🔥" },
-  { id: "p3", imageUrl: gallery1, caption: "New content just dropped ✨" },
-  { id: "p4", imageUrl: gallery4, caption: "Exclusive behind the scenes" },
-];
+import ProfileTabs from "@/components/profile/ProfileTabs";
 
 const quickLinks = [
   { label: "Inbox", icon: Inbox, path: "/home" },
@@ -29,7 +19,7 @@ const ProfilePage = () => {
     <AppLayout>
       <div className="max-w-lg mx-auto w-full pb-6">
         {/* Cover Image */}
-        <div className="h-44 md:h-56 relative overflow-hidden">
+        <div className="h-44 md:h-56 relative overflow-hidden group">
           {creator.coverImage ? (
             <img src={creator.coverImage} alt="" className="w-full h-full object-cover" />
           ) : creator.avatarImg ? (
@@ -38,12 +28,15 @@ const ProfilePage = () => {
             <div className="w-full h-full bg-gradient-to-br from-primary/30 via-primary/10 to-background" />
           )}
           <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-background" />
+          <button className="absolute top-3 right-3 w-8 h-8 rounded-full bg-background/40 backdrop-blur-sm flex items-center justify-center text-white opacity-0 group-hover:opacity-100 transition-opacity">
+            <Camera size={16} />
+          </button>
         </div>
 
         {/* Profile info */}
         <div className="px-5 -mt-20 relative z-10">
           <div className="flex items-end gap-4">
-            <div className="shrink-0">
+            <div className="shrink-0 relative group">
               <div className="w-28 h-28 rounded-full p-[3px] bg-gradient-to-br from-cyan-400 via-teal-400 to-blue-500">
                 <div className="w-full h-full rounded-full overflow-hidden border-[3px] border-background">
                   {creator.avatarImg ? (
@@ -55,6 +48,9 @@ const ProfilePage = () => {
                   )}
                 </div>
               </div>
+              <button className="absolute bottom-1 right-1 w-7 h-7 rounded-full bg-primary flex items-center justify-center text-primary-foreground opacity-0 group-hover:opacity-100 transition-opacity shadow-lg">
+                <Edit size={12} />
+              </button>
             </div>
             <div className="pb-2">
               <div className="flex items-center gap-1.5">
@@ -71,7 +67,7 @@ const ProfilePage = () => {
           <p className="text-sm text-foreground mt-4 leading-relaxed">{creator.bio}</p>
         </div>
 
-        {/* Quick Links (mobile only - matches Figma "Profile - Creator views own profile") */}
+        {/* Quick Links (mobile only) */}
         <div className="mt-6 px-5 grid grid-cols-4 gap-2 md:hidden">
           {quickLinks.map((link) => {
             const Icon = link.icon;
@@ -79,7 +75,7 @@ const ProfilePage = () => {
               <button
                 key={link.label}
                 onClick={() => navigate(link.path)}
-                className="flex flex-col items-center gap-1.5 py-3 rounded-xl bg-card border border-border hover:bg-surface-hover transition-colors"
+                className="flex flex-col items-center gap-1.5 py-3 rounded-xl bg-card border border-border hover:bg-muted transition-colors"
               >
                 <Icon size={20} className="text-muted-foreground" />
                 <span className="text-[10px] font-medium text-muted-foreground">{link.label}</span>
@@ -88,16 +84,8 @@ const ProfilePage = () => {
           })}
         </div>
 
-        {/* Content Feed */}
-        <div className="mt-6 px-5 space-y-5">
-          {mockPosts.map((post) => (
-            <div key={post.id} className="rounded-2xl overflow-hidden bg-card border border-border">
-              <div className="aspect-[4/5]">
-                <img src={post.imageUrl} alt="" className="w-full h-full object-cover" />
-              </div>
-            </div>
-          ))}
-        </div>
+        {/* Tabs: Posts / Media / Saved */}
+        <ProfileTabs creatorName={creator.name} />
       </div>
     </AppLayout>
   );
