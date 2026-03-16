@@ -1,9 +1,10 @@
-import { Home, Flame, Box, User } from "lucide-react";
+import { Home, Users, Box, User, MessageCircle } from "lucide-react";
 import { useNavigate, useLocation } from "react-router-dom";
 
 const navItems = [
   { id: "home", label: "Home", icon: Home, path: "/home" },
-  { id: "sexting", label: "Sexting", icon: Flame, path: "/sexting" },
+  { id: "sexting", label: "Sexting", icon: Users, path: "/sexting" },
+  { id: "chat", label: "", icon: MessageCircle, path: "/home", isCenter: true },
   { id: "box", label: "Box", icon: Box, path: "/box" },
   { id: "profile", label: "Profile", icon: User, path: "/profile" },
 ];
@@ -18,6 +19,19 @@ const BottomNav = () => {
         {navItems.map((item) => {
           const Icon = item.icon;
           const isActive = location.pathname.startsWith(item.path);
+
+          if (item.isCenter) {
+            return (
+              <button
+                key={item.id}
+                onClick={() => navigate(item.path)}
+                className="w-14 h-14 -mt-5 rounded-full gradient-primary flex items-center justify-center text-primary-foreground shadow-lg shadow-primary/30"
+              >
+                <Icon size={24} fill="currentColor" />
+              </button>
+            );
+          }
+
           return (
             <button
               key={item.id}
