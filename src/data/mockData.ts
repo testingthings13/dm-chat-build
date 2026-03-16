@@ -149,7 +149,7 @@ export const conversations: Conversation[] = [
   },
   {
     id: "4",
-    user: { id: "4b", name: "Dude", username: "dude", avatar: "DU", avatarImg: avatar4, online: true },
+    user: { id: "4b", name: "Dude", username: "dude", avatar: "DU", avatarImg: avatar7, online: true },
     lastMessage: "Dude is typing...",
     lastMessageTime: "now",
     unreadCount: 0,
