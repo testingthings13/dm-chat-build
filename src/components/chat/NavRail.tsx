@@ -18,7 +18,7 @@ const NavRail = ({ activeTab, onTabChange }: NavRailProps) => {
       <div className="flex flex-col items-center gap-1">
         {/* Logo */}
         <div className="w-10 h-10 rounded-lg bg-nav-rail-active flex items-center justify-center mb-6">
-          <span className="text-primary-foreground font-bold text-sm">CB</span>
+          <span className="text-primary-foreground font-bold text-sm">DM</span>
         </div>
 
         {/* Nav items */}
