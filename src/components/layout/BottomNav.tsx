@@ -1,4 +1,4 @@
-import { Home, Users, Box, User, MessageCircle } from "lucide-react";
+import { Home, Users, Box, Settings, MessageCircle } from "lucide-react";
 import { useNavigate, useLocation } from "react-router-dom";
 
 const navItems = [
@@ -6,7 +6,7 @@ const navItems = [
   { id: "sexting", label: "Sexting", icon: Users, path: "/sexting" },
   { id: "chat", label: "", icon: MessageCircle, path: "/home", isCenter: true },
   { id: "box", label: "Box", icon: Box, path: "/box" },
-  { id: "profile", label: "Profile", icon: User, path: "/profile" },
+  { id: "settings", label: "Settings", icon: Settings, path: "/settings" },
 ];
 
 const BottomNav = () => {
