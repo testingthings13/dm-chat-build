@@ -46,8 +46,12 @@ const ChatView = () => {
             <motion.div key={msg.id} initial={{ opacity: 0, y: 6 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.15, delay: index * 0.02 }} className={`flex ${msg.isOwn ? "justify-end" : "justify-start"}`}>
               <div className={`max-w-[75%] ${msg.isOwn ? "" : "flex gap-2.5"}`}>
                 {!msg.isOwn && (
-                  <div className="w-8 h-8 rounded-full bg-secondary flex items-center justify-center shrink-0 mt-1">
-                    <span className="text-[10px] font-medium text-muted-foreground">{user.avatar}</span>
+                  <div className="w-8 h-8 rounded-full bg-secondary flex items-center justify-center shrink-0 mt-1 overflow-hidden">
+                    {user.avatarImg ? (
+                      <img src={user.avatarImg} alt={user.name} className="w-full h-full object-cover" />
+                    ) : (
+                      <span className="text-[10px] font-medium text-muted-foreground">{user.avatar}</span>
+                    )}
                   </div>
                 )}
                 <div>
