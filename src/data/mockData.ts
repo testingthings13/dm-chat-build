@@ -97,11 +97,11 @@ export interface GalleryItem {
   type: "photo" | "video";
 }
 
-const avatarImages = [avatar1, avatar2, avatar3, avatar4, avatar5, avatar6];
+const avatarImages = [avatar1, avatar2, avatar3, avatar4, avatar5, avatar6, avatar7, avatar8];
 export const galleryImages = [gallery1, gallery2, gallery3, gallery4, gallery5, gallery6, gallery7, gallery8, gallery9, gallery10];
 
 const users: User[] = [
-  { id: "1", name: "Jamie O", username: "jamieo", avatar: "JO", avatarImg: avatar1, online: true, isCreator: true, followers: 21000, bio: "Welcome to my Chatabox ✨" },
+  { id: "1", name: "Jamie O", username: "jamieo", avatar: "JO", avatarImg: avatar8, online: true, isCreator: true, followers: 21000, bio: "Welcome to my Chatabox ✨" },
   { id: "2", name: "Jammie", username: "jammie", avatar: "JM", avatarImg: avatar2, online: true, isCreator: true },
   { id: "3", name: "Spencer", username: "spencer", avatar: "SP", avatarImg: avatar3, online: false, isCreator: true },
   { id: "4", name: "Jewel Diamant", username: "jeweldiamant", avatar: "JD", avatarImg: avatar4, online: true, isCreator: true },
