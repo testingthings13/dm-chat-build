@@ -1,6 +1,6 @@
 import { useParams, useNavigate } from "react-router-dom";
 import { ArrowLeft } from "lucide-react";
-import { sextingScripts } from "@/data/mockData";
+import { sextingScripts, galleryImages } from "@/data/mockData";
 import { motion } from "framer-motion";
 
 const SextingReview = () => {
@@ -41,7 +41,9 @@ const SextingReview = () => {
               className="bg-card border border-border rounded-xl overflow-hidden"
             >
               {/* Thumbnail */}
-              <div className="h-32 bg-gradient-to-br from-primary/15 to-primary/5" />
+              <div className="h-32 overflow-hidden">
+                <img src={galleryImages[index % galleryImages.length]} alt="" className="w-full h-full object-cover" />
+              </div>
 
               {/* Info */}
               <div className="p-3">

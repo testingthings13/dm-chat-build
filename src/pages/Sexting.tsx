@@ -58,9 +58,11 @@ const Sexting = () => {
 
               {/* Thumbnail strip */}
               <div className="flex gap-2 overflow-x-auto pb-2 mb-4">
-                {script.thumbnails.map((_, i) => (
+                {script.thumbnails.map((thumb, i) => (
                   <div key={i} className="shrink-0 w-32 rounded-xl overflow-hidden">
-                    <div className="aspect-[3/4] bg-gradient-to-br from-primary/20 via-secondary to-primary/10 rounded-xl" />
+                    <div className="aspect-[3/4] rounded-xl overflow-hidden">
+                      <img src={thumb} alt={`Item ${i + 1}`} className="w-full h-full object-cover" />
+                    </div>
                     <p className="text-xs text-muted-foreground mt-1.5 font-medium">Item {i + 1}</p>
                   </div>
                 ))}

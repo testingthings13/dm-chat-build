@@ -8,6 +8,12 @@ import gallery1 from "@/assets/gallery/gallery-1.jpg";
 import gallery2 from "@/assets/gallery/gallery-2.jpg";
 import gallery3 from "@/assets/gallery/gallery-3.jpg";
 import gallery4 from "@/assets/gallery/gallery-4.jpg";
+import gallery5 from "@/assets/gallery/gallery-5.jpg";
+import gallery6 from "@/assets/gallery/gallery-6.jpg";
+import gallery7 from "@/assets/gallery/gallery-7.jpg";
+import gallery8 from "@/assets/gallery/gallery-8.jpg";
+import gallery9 from "@/assets/gallery/gallery-9.jpg";
+import gallery10 from "@/assets/gallery/gallery-10.jpg";
 import cover1 from "@/assets/covers/cover-1.jpg";
 import cover2 from "@/assets/covers/cover-2.jpg";
 import cover3 from "@/assets/covers/cover-3.jpg";
@@ -90,7 +96,7 @@ export interface GalleryItem {
 }
 
 const avatarImages = [avatar1, avatar2, avatar3, avatar4, avatar5, avatar6];
-export const galleryImages = [gallery1, gallery2, gallery3, gallery4];
+export const galleryImages = [gallery1, gallery2, gallery3, gallery4, gallery5, gallery6, gallery7, gallery8, gallery9, gallery10];
 
 const users: User[] = [
   { id: "1", name: "Jamie O", username: "jamieo", avatar: "JO", avatarImg: avatar1, online: true, isCreator: true, followers: 21000, bio: "Welcome to my Chatabox ✨" },
@@ -268,7 +274,7 @@ export const sextingScripts: SextingScript[] = [
       price: 20.0,
       hasMedia: i % 3 === 0,
     })),
-    thumbnails: ["1", "2", "3", "4", "5", "6"],
+    thumbnails: [gallery1, gallery2, gallery3, gallery4, gallery5, gallery6],
   },
   {
     id: "2",
@@ -282,7 +288,7 @@ export const sextingScripts: SextingScript[] = [
       price: 20.0,
       hasMedia: i % 3 === 0,
     })),
-    thumbnails: ["1", "2", "3", "4", "5", "6"],
+    thumbnails: [gallery5, gallery6, gallery7, gallery8, gallery9, gallery10],
   },
   {
     id: "3",
@@ -296,7 +302,7 @@ export const sextingScripts: SextingScript[] = [
       price: 20.0,
       hasMedia: i % 3 === 0,
     })),
-    thumbnails: ["1", "2", "3", "4", "5", "6"],
+    thumbnails: [gallery3, gallery7, gallery1, gallery9, gallery4, gallery10],
   },
 ];
 
