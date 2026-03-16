@@ -18,81 +18,94 @@ const Home = () => {
 
   return (
     <AppLayout>
-      <div className="max-w-2xl mx-auto w-full">
-        {/* Header */}
-        <div className="px-5 pt-6 pb-3 flex items-center gap-3">
-          <h1 className="text-2xl font-extrabold text-foreground tracking-tight">Chats</h1>
-          <Search size={18} className="text-muted-foreground" />
-        </div>
+      <div className="flex h-full">
+        {/* Conversation list */}
+        <div className="w-full md:w-[380px] md:border-r md:border-border shrink-0">
+          {/* Header */}
+          <div className="px-5 pt-6 pb-3 flex items-center gap-3">
+            <h1 className="text-2xl font-extrabold text-foreground tracking-tight">Chats</h1>
+            <Search size={18} className="text-muted-foreground" />
+          </div>
 
-        {/* Tabs */}
-        <div className="px-5 pb-3 flex items-center gap-2">
-          {(["all", "unread"] as const).map((t) => (
-            <button
-              key={t}
-              onClick={() => setTab(t)}
-              className={`px-5 py-2 rounded-full text-xs font-bold transition-all duration-200 capitalize ${
-                tab === t
-                  ? "gradient-primary text-primary-foreground shadow-md shadow-primary/20"
-                  : "bg-card border border-border text-muted-foreground hover:text-foreground"
-              }`}
-            >
-              {t}
+          {/* Tabs */}
+          <div className="px-5 pb-3 flex items-center gap-2">
+            {(["all", "unread"] as const).map((t) => (
+              <button
+                key={t}
+                onClick={() => setTab(t)}
+                className={`px-5 py-2 rounded-full text-xs font-bold transition-all duration-200 capitalize ${
+                  tab === t
+                    ? "gradient-primary text-primary-foreground shadow-md shadow-primary/20"
+                    : "bg-card border border-border text-muted-foreground hover:text-foreground"
+                }`}
+              >
+                {t}
+              </button>
+            ))}
+            <button className="w-9 h-9 rounded-full bg-card border border-border flex items-center justify-center text-muted-foreground hover:text-foreground">
+              <Star size={16} />
             </button>
-          ))}
-          <button className="w-9 h-9 rounded-full bg-card border border-border flex items-center justify-center text-muted-foreground hover:text-foreground">
-            <Star size={16} />
-          </button>
+          </div>
+
+          {/* Conversations list */}
+          <div className="mt-1">
+            {filtered.map((conv, index) => (
+              <motion.button
+                key={conv.id}
+                initial={{ opacity: 0, y: 6 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.15, delay: index * 0.03 }}
+                onClick={() => navigate(`/chat/${conv.id}`)}
+                className="w-full flex items-center gap-3.5 px-5 py-3.5 text-left transition-colors duration-100 hover:bg-card/60 active:bg-card rounded-xl mx-0"
+              >
+                {/* Avatar */}
+                <div className="relative shrink-0">
+                  <div className="w-12 h-12 rounded-full bg-secondary flex items-center justify-center text-sm font-bold text-muted-foreground overflow-hidden">
+                    {conv.user.avatarImg ? (
+                      <img src={conv.user.avatarImg} alt={conv.user.name} className="w-full h-full object-cover" />
+                    ) : (
+                      conv.user.avatar
+                    )}
+                  </div>
+                  {conv.user.online && (
+                    <span className="absolute bottom-0 right-0 w-3 h-3 bg-online rounded-full border-2 border-background" />
+                  )}
+                </div>
+
+                {/* Content */}
+                <div className="flex-1 min-w-0">
+                  <div className="flex items-center justify-between">
+                    <span className="text-sm font-semibold text-foreground truncate">{conv.user.name}</span>
+                    <span className="text-[11px] text-muted-foreground shrink-0 ml-2">{conv.lastMessageTime}</span>
+                  </div>
+                  <p className="text-xs text-muted-foreground truncate mt-0.5">
+                    {conv.isTyping ? (
+                      <span className="text-primary italic">{conv.user.name} is typing...</span>
+                    ) : (
+                      conv.lastMessage
+                    )}
+                  </p>
+                </div>
+
+                {/* Unread badge */}
+                {conv.unreadCount > 0 && (
+                  <span className="shrink-0 w-6 h-6 rounded-full gradient-primary text-primary-foreground text-[11px] font-bold flex items-center justify-center">
+                    {conv.unreadCount}
+                  </span>
+                )}
+              </motion.button>
+            ))}
+          </div>
         </div>
 
-        {/* Conversations list */}
-        <div className="mt-1">
-          {filtered.map((conv, index) => (
-            <motion.button
-              key={conv.id}
-              initial={{ opacity: 0, y: 6 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.15, delay: index * 0.03 }}
-              onClick={() => navigate(`/chat/${conv.id}`)}
-              className="w-full flex items-center gap-3.5 px-5 py-3.5 text-left transition-colors duration-100 hover:bg-card/60 active:bg-card rounded-xl mx-0"
-            >
-              {/* Avatar */}
-              <div className="relative shrink-0">
-                <div className="w-12 h-12 rounded-full bg-secondary flex items-center justify-center text-sm font-bold text-muted-foreground overflow-hidden">
-                  {conv.user.avatarImg ? (
-                    <img src={conv.user.avatarImg} alt={conv.user.name} className="w-full h-full object-cover" />
-                  ) : (
-                    conv.user.avatar
-                  )}
-                </div>
-                {conv.user.online && (
-                  <span className="absolute bottom-0 right-0 w-3 h-3 bg-online rounded-full border-2 border-background" />
-                )}
-              </div>
-
-              {/* Content */}
-              <div className="flex-1 min-w-0">
-                <div className="flex items-center justify-between">
-                  <span className="text-sm font-semibold text-foreground truncate">{conv.user.name}</span>
-                  <span className="text-[11px] text-muted-foreground shrink-0 ml-2">{conv.lastMessageTime}</span>
-                </div>
-                <p className="text-xs text-muted-foreground truncate mt-0.5">
-                  {conv.isTyping ? (
-                    <span className="text-primary italic">{conv.user.name} is typing...</span>
-                  ) : (
-                    conv.lastMessage
-                  )}
-                </p>
-              </div>
-
-              {/* Unread badge */}
-              {conv.unreadCount > 0 && (
-                <span className="shrink-0 w-6 h-6 rounded-full gradient-primary text-primary-foreground text-[11px] font-bold flex items-center justify-center">
-                  {conv.unreadCount}
-                </span>
-              )}
-            </motion.button>
-          ))}
+        {/* Desktop: Preview of first conversation */}
+        <div className="hidden md:flex flex-1 flex-col items-center justify-center">
+          <div className="text-center">
+            <div className="w-16 h-16 rounded-2xl gradient-primary flex items-center justify-center mx-auto mb-4 opacity-30">
+              <Search size={28} className="text-primary-foreground" />
+            </div>
+            <p className="text-muted-foreground text-sm">Select a conversation to start chatting</p>
+          </div>
         </div>
       </div>
     </AppLayout>
