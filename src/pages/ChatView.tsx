@@ -68,8 +68,12 @@ const ChatView = () => {
           ))}
           {conversation.isTyping && (
             <div className="flex items-center gap-2.5">
-              <div className="w-8 h-8 rounded-full bg-secondary flex items-center justify-center">
-                <span className="text-[10px] font-medium text-muted-foreground">{user.avatar}</span>
+              <div className="w-8 h-8 rounded-full bg-secondary flex items-center justify-center overflow-hidden">
+                {user.avatarImg ? (
+                  <img src={user.avatarImg} alt={user.name} className="w-full h-full object-cover" />
+                ) : (
+                  <span className="text-[10px] font-medium text-muted-foreground">{user.avatar}</span>
+                )}
               </div>
               <div className="bg-message-other rounded-2xl rounded-bl-md px-4 py-3 flex gap-1">
                 <motion.span animate={{ opacity: [0.3, 1, 0.3] }} transition={{ repeat: Infinity, duration: 1.2, delay: 0 }} className="w-2 h-2 rounded-full bg-muted-foreground" />
