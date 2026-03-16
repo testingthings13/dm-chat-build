@@ -245,6 +245,7 @@ export const creators: Creator[] = [
     username: "lucydiamant",
     avatar: "LD",
     avatarImg: avatar6,
+    coverImage: cover5,
     online: true,
     followers: 12000,
     bio: "New content daily 💕",
