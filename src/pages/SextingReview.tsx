@@ -41,7 +41,9 @@ const SextingReview = () => {
               className="bg-card border border-border rounded-xl overflow-hidden"
             >
               {/* Thumbnail */}
-              <div className="h-32 bg-gradient-to-br from-primary/15 to-primary/5" />
+              <div className="h-32 overflow-hidden">
+                <img src={galleryImages[index % galleryImages.length]} alt="" className="w-full h-full object-cover" />
+              </div>
 
               {/* Info */}
               <div className="p-3">
