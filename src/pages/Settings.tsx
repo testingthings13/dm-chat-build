@@ -1,18 +1,7 @@
-import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { ChevronRight, User, Shield, CreditCard, BarChart3, Users, Bell, Landmark, Monitor, Search, ArrowLeft } from "lucide-react";
 import AppLayout from "@/components/layout/AppLayout";
-
-const settingsItems = [
-  { label: "Your Account", icon: User, path: "/settings/account" },
-  { label: "Privacy and Safety", icon: Shield, path: "/settings/privacy" },
-  { label: "Subscriptions, Chat Prices and Packages", icon: CreditCard, path: "/settings" },
-  { label: "Promotions and Tracking", icon: BarChart3, path: "/settings" },
-  { label: "Fans and Following", icon: Users, path: "/settings" },
-  { label: "Your Notifications", icon: Bell, path: "/settings" },
-  { label: "Banking, Payouts", icon: Landmark, path: "/settings" },
-  { label: "Display", icon: Monitor, path: "/settings" },
-];
+import { settingsItems } from "@/components/settings/SettingsLayout";
 
 const Settings = () => {
   const navigate = useNavigate();
@@ -45,7 +34,7 @@ const Settings = () => {
           </div>
         </div>
 
-        {/* Desktop right panel - default "Your Account" view */}
+        {/* Desktop right panel */}
         <div className="hidden md:flex flex-1 flex-col">
           <div className="px-6 pt-6 pb-4 flex items-center gap-3 border-b border-border">
             <div className="w-10 h-10 rounded-full gradient-primary flex items-center justify-center">

@@ -3,16 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { ArrowLeft, ChevronRight, User, Shield, CreditCard, BarChart3, Users, Bell, Landmark, Monitor, Search } from "lucide-react";
 import AppLayout from "@/components/layout/AppLayout";
 
-const settingsItems = [
-  { label: "Your Account", icon: User, path: "/settings/account" },
-  { label: "Privacy and Safety", icon: Shield, path: "/settings/privacy", active: true },
-  { label: "Subscriptions, Chat Prices and Packages", icon: CreditCard, path: "/settings" },
-  { label: "Promotions and Tracking", icon: BarChart3, path: "/settings" },
-  { label: "Fans and Following", icon: Users, path: "/settings" },
-  { label: "Your Notifications", icon: Bell, path: "/settings" },
-  { label: "Banking, Payouts", icon: Landmark, path: "/settings" },
-  { label: "Display", icon: Monitor, path: "/settings" },
-];
+import { settingsItems } from "@/components/settings/SettingsLayout";
 
 interface ToggleProps { label: string; enabled: boolean; onToggle: () => void; description?: string; }
 const Toggle = ({ label, enabled, onToggle, description }: ToggleProps) => (
