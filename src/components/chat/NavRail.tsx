@@ -1,4 +1,5 @@
 import { MessageSquare, Users, Bell, Settings, LogOut } from "lucide-react";
+import logo from "@/assets/logo.png";
 
 interface NavRailProps {
   activeTab: string;
