@@ -52,7 +52,7 @@ const Landing = () => {
       >
         <img src={logo} alt="DMchat" className="w-16 h-16 mb-4" />
         <h1 className="text-4xl md:text-5xl font-extrabold text-foreground tracking-tight mb-16">
-          DMchat
+          Chatabox
         </h1>
 
         <div className="flex flex-col gap-4 w-full max-w-sm">
