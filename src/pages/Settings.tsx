@@ -8,7 +8,6 @@ const settingsItems = [
   { label: "Subscriptions, Chat Prices and Packages", icon: CreditCard, path: "/settings" },
   { label: "Promotions and Tracking", icon: BarChart3, path: "/settings" },
   { label: "Fans and Following", icon: Users, path: "/settings" },
-  { label: "Fans and Following", icon: Users, path: "/settings" },
   { label: "Your Notifications", icon: Bell, path: "/settings" },
   { label: "Banking, Payouts", icon: Landmark, path: "/settings" },
   { label: "Display", icon: Monitor, path: "/settings" },
