@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -6,54 +6,58 @@
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 220 26% 14%;
+    --background: 240 10% 4%;
+    --foreground: 0 0% 95%;
 
-    --card: 210 20% 98%;
-    --card-foreground: 220 26% 14%;
+    --card: 240 10% 8%;
+    --card-foreground: 0 0% 95%;
 
-    --popover: 0 0% 100%;
-    --popover-foreground: 220 26% 14%;
+    --popover: 240 10% 8%;
+    --popover-foreground: 0 0% 95%;
 
-    --primary: 239 84% 67%;
+    --primary: 265 90% 60%;
     --primary-foreground: 0 0% 100%;
 
-    --secondary: 210 20% 98%;
-    --secondary-foreground: 220 26% 14%;
+    --secondary: 240 10% 14%;
+    --secondary-foreground: 0 0% 90%;
 
-    --muted: 220 14% 96%;
-    --muted-foreground: 220 9% 46%;
+    --muted: 240 8% 14%;
+    --muted-foreground: 240 5% 55%;
 
-    --accent: 160 84% 39%;
+    --accent: 265 90% 60%;
     --accent-foreground: 0 0% 100%;
 
     --destructive: 0 84% 60%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 220 13% 91%;
-    --input: 220 13% 91%;
-    --ring: 239 84% 67%;
+    --border: 240 8% 18%;
+    --input: 240 8% 18%;
+    --ring: 265 90% 60%;
 
-    --radius: 0.5rem;
+    --radius: 0.75rem;
 
-    --sidebar-background: 210 20% 98%;
-    --sidebar-foreground: 220 9% 46%;
-    --sidebar-primary: 239 84% 67%;
+    --sidebar-background: 240 10% 6%;
+    --sidebar-foreground: 240 5% 55%;
+    --sidebar-primary: 265 90% 60%;
     --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 220 14% 96%;
-    --sidebar-accent-foreground: 220 26% 14%;
-    --sidebar-border: 220 13% 91%;
-    --sidebar-ring: 239 84% 67%;
+    --sidebar-accent: 240 10% 14%;
+    --sidebar-accent-foreground: 0 0% 95%;
+    --sidebar-border: 240 8% 18%;
+    --sidebar-ring: 265 90% 60%;
 
     /* Custom tokens */
-    --nav-rail: 220 26% 14%;
-    --nav-rail-foreground: 220 9% 70%;
-    --nav-rail-active: 239 84% 67%;
-    --online: 160 84% 39%;
-    --message-own: 239 84% 67%;
+    --nav-rail: 240 10% 6%;
+    --nav-rail-foreground: 240 5% 50%;
+    --nav-rail-active: 265 90% 60%;
+    --online: 142 76% 50%;
+    --message-own: 265 90% 55%;
     --message-own-foreground: 0 0% 100%;
-    --message-other: 220 14% 96%;
-    --message-other-foreground: 220 26% 14%;
+    --message-other: 240 10% 14%;
+    --message-other-foreground: 0 0% 92%;
+    --gradient-start: 265 90% 60%;
+    --gradient-end: 300 80% 55%;
+    --surface: 240 10% 10%;
+    --surface-hover: 240 10% 13%;
   }
 }
 
@@ -63,6 +67,38 @@
   }
   body {
     @apply bg-background text-foreground font-sans antialiased;
-    font-family: 'Inter', system-ui, sans-serif;
+    font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+  }
+
+  /* Custom scrollbar */
+  ::-webkit-scrollbar {
+    width: 6px;
+  }
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: hsl(240 8% 22%);
+    border-radius: 3px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: hsl(240 8% 30%);
+  }
+}
+
+@layer utilities {
+  .gradient-primary {
+    background: linear-gradient(135deg, hsl(265 90% 60%), hsl(300 80% 55%));
+  }
+  .gradient-text {
+    background: linear-gradient(135deg, hsl(265 90% 60%), hsl(300 80% 55%));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  .glass {
+    background: hsl(240 10% 8% / 0.8);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
   }
 }
