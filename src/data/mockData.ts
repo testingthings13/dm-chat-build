@@ -96,7 +96,7 @@ export interface GalleryItem {
 }
 
 const avatarImages = [avatar1, avatar2, avatar3, avatar4, avatar5, avatar6];
-export const galleryImages = [gallery1, gallery2, gallery3, gallery4];
+export const galleryImages = [gallery1, gallery2, gallery3, gallery4, gallery5, gallery6, gallery7, gallery8, gallery9, gallery10];
 
 const users: User[] = [
   { id: "1", name: "Jamie O", username: "jamieo", avatar: "JO", avatarImg: avatar1, online: true, isCreator: true, followers: 21000, bio: "Welcome to my Chatabox ✨" },
