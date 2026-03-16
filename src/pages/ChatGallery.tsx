@@ -59,8 +59,11 @@ const ChatGallery = () => {
             key={item.id}
             className="relative aspect-square bg-card rounded-lg overflow-hidden group cursor-pointer"
           >
-            {/* Placeholder gradient */}
-            <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-primary/5" />
+            {item.thumbnailUrl ? (
+              <img src={item.thumbnailUrl} alt="" className="absolute inset-0 w-full h-full object-cover" />
+            ) : (
+              <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-primary/5" />
+            )}
 
             {item.isLocked && (
               <div className="absolute inset-0 flex flex-col items-center justify-center bg-background/60 backdrop-blur-sm">

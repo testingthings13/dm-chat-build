@@ -1,17 +1,23 @@
 import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
 import { MessageCircle } from "lucide-react";
+import avatar1 from "@/assets/avatars/avatar-1.jpg";
+import avatar2 from "@/assets/avatars/avatar-2.jpg";
+import avatar3 from "@/assets/avatars/avatar-3.jpg";
+import avatar4 from "@/assets/avatars/avatar-4.jpg";
+import avatar5 from "@/assets/avatars/avatar-5.jpg";
+import avatar6 from "@/assets/avatars/avatar-6.jpg";
 
 const avatars = [
-  { top: "12%", left: "15%", size: 72, ring: "border-cyan-400" },
-  { top: "8%", left: "55%", size: 56, ring: "border-orange-400" },
-  { top: "22%", left: "75%", size: 80, ring: "border-teal-400" },
-  { top: "35%", left: "8%", size: 64, ring: "border-blue-400" },
-  { top: "30%", left: "42%", size: 60, ring: "border-cyan-500" },
-  { top: "55%", left: "5%", size: 88, ring: "border-teal-300" },
-  { top: "58%", left: "50%", size: 68, ring: "border-cyan-400" },
-  { top: "52%", left: "80%", size: 56, ring: "border-orange-500" },
-  { top: "72%", left: "30%", size: 60, ring: "border-gray-500" },
+  { top: "12%", left: "15%", size: 72, ring: "border-cyan-400", img: avatar1 },
+  { top: "8%", left: "55%", size: 56, ring: "border-orange-400", img: avatar2 },
+  { top: "22%", left: "75%", size: 80, ring: "border-teal-400", img: avatar3 },
+  { top: "35%", left: "8%", size: 64, ring: "border-blue-400", img: avatar4 },
+  { top: "30%", left: "42%", size: 60, ring: "border-cyan-500", img: avatar5 },
+  { top: "55%", left: "5%", size: 88, ring: "border-teal-300", img: avatar6 },
+  { top: "58%", left: "50%", size: 68, ring: "border-cyan-400", img: avatar1 },
+  { top: "52%", left: "80%", size: 56, ring: "border-orange-500", img: avatar3 },
+  { top: "72%", left: "30%", size: 60, ring: "border-gray-500", img: avatar5 },
 ];
 
 const Landing = () => {
@@ -19,11 +25,9 @@ const Landing = () => {
 
   return (
     <div className="min-h-screen flex flex-col items-center justify-end relative overflow-hidden bg-background">
-      {/* Background blur overlay */}
       <div className="absolute inset-0 bg-background/70" />
       <div className="absolute top-0 left-0 right-0 h-1/2 bg-gradient-to-b from-background/40 to-background/80" />
 
-      {/* Floating avatar circles */}
       {avatars.map((a, i) => (
         <motion.div
           key={i}
@@ -33,11 +37,10 @@ const Landing = () => {
           className={`absolute rounded-full border-2 ${a.ring} overflow-hidden bg-secondary`}
           style={{ top: a.top, left: a.left, width: a.size, height: a.size }}
         >
-          <div className="w-full h-full bg-gradient-to-br from-muted to-secondary" />
+          <img src={a.img} alt="" className="w-full h-full object-cover" />
         </motion.div>
       ))}
 
-      {/* Center content */}
       <motion.div
         initial={{ opacity: 0, y: 30 }}
         animate={{ opacity: 1, y: 0 }}
@@ -45,7 +48,6 @@ const Landing = () => {
         className="relative z-10 flex flex-col items-center w-full px-8 pb-12"
         style={{ marginTop: "auto" }}
       >
-        {/* Logo */}
         <div className="w-16 h-16 rounded-2xl gradient-primary flex items-center justify-center mb-4 shadow-2xl shadow-primary/30">
           <MessageCircle size={32} className="text-primary-foreground" fill="currentColor" />
         </div>
@@ -53,7 +55,6 @@ const Landing = () => {
           Chatabox
         </h1>
 
-        {/* Buttons */}
         <div className="flex flex-col gap-4 w-full max-w-sm">
           <button
             onClick={() => navigate("/signup")}

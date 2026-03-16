@@ -19,8 +19,14 @@ const CreatorProfile = () => {
           <ArrowLeft size={18} />
         </button>
         <div className="absolute -bottom-14 left-1/2 -translate-x-1/2">
-          <div className="w-28 h-28 rounded-full gradient-primary flex items-center justify-center border-4 border-background shadow-xl">
-            <span className="text-primary-foreground font-bold text-3xl">{creator.avatar}</span>
+          <div className="w-28 h-28 rounded-full overflow-hidden border-4 border-background shadow-xl">
+            {creator.avatarImg ? (
+              <img src={creator.avatarImg} alt={creator.name} className="w-full h-full object-cover" />
+            ) : (
+              <div className="w-full h-full gradient-primary flex items-center justify-center">
+                <span className="text-primary-foreground font-bold text-3xl">{creator.avatar}</span>
+              </div>
+            )}
           </div>
         </div>
       </div>
