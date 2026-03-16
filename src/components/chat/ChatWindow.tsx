@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Phone, Video, MoreVertical, Paperclip, Smile, Send } from "lucide-react";
 import type { Conversation } from "@/data/mockData";
 import { motion } from "framer-motion";
+import logo from "@/assets/logo.png";
 
 interface ChatWindowProps {
   conversation: Conversation | null;
