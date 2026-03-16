@@ -1,4 +1,5 @@
 import { MessageSquare, Users, Bell, Settings, LogOut } from "lucide-react";
+import logo from "@/assets/logo.png";
 
 interface NavRailProps {
   activeTab: string;
@@ -17,8 +18,8 @@ const NavRail = ({ activeTab, onTabChange }: NavRailProps) => {
     <div className="flex flex-col items-center w-[68px] bg-nav-rail py-6 justify-between shrink-0">
       <div className="flex flex-col items-center gap-1">
         {/* Logo */}
-        <div className="w-10 h-10 rounded-lg bg-nav-rail-active flex items-center justify-center mb-6">
-          <span className="text-primary-foreground font-bold text-sm">DM</span>
+        <div className="w-10 h-10 rounded-lg flex items-center justify-center mb-6">
+          <img src={logo} alt="DMchat" className="w-10 h-10" />
         </div>
 
         {/* Nav items */}

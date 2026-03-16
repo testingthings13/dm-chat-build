@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
-import { MessageCircle } from "lucide-react";
+import logo from "@/assets/logo.png";
 import avatar1 from "@/assets/avatars/avatar-1.jpg";
 import avatar2 from "@/assets/avatars/avatar-2.jpg";
 import avatar3 from "@/assets/avatars/avatar-3.jpg";
@@ -50,9 +50,7 @@ const Landing = () => {
         className="relative z-10 flex flex-col items-center w-full px-8 pb-12"
         style={{ marginTop: "auto" }}
       >
-        <div className="w-16 h-16 rounded-2xl gradient-primary flex items-center justify-center mb-4 shadow-2xl shadow-primary/30">
-          <MessageCircle size={32} className="text-primary-foreground" fill="currentColor" />
-        </div>
+        <img src={logo} alt="DMchat" className="w-16 h-16 mb-4" />
         <h1 className="text-4xl md:text-5xl font-extrabold text-foreground tracking-tight mb-16">
           DMchat
         </h1>

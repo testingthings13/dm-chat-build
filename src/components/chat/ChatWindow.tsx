@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Phone, Video, MoreVertical, Paperclip, Smile, Send } from "lucide-react";
 import type { Conversation } from "@/data/mockData";
 import { motion } from "framer-motion";
+import logo from "@/assets/logo.png";
 
 interface ChatWindowProps {
   conversation: Conversation | null;
@@ -13,10 +14,8 @@ const ChatWindow = ({ conversation }: ChatWindowProps) => {
   if (!conversation) {
     return (
       <div className="flex-1 flex items-center justify-center bg-background">
-        <div className="text-center">
-          <div className="w-16 h-16 rounded-2xl bg-primary/10 flex items-center justify-center mx-auto mb-4">
-            <span className="text-primary font-bold text-2xl">DM</span>
-          </div>
+        <div className="text-center flex flex-col items-center">
+          <img src={logo} alt="DMchat" className="w-16 h-16 mb-4" />
           <h2 className="text-lg font-semibold text-foreground">Welcome to DMchat</h2>
           <p className="text-sm text-muted-foreground mt-1">Select a conversation to start messaging</p>
         </div>

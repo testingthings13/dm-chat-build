@@ -1,5 +1,6 @@
 import { Home, Users, Box, User, MessageCircle, Settings } from "lucide-react";
 import { useNavigate, useLocation } from "react-router-dom";
+import logo from "@/assets/logo.png";
 
 const mainNav = [
   { id: "chat", icon: MessageCircle, path: "/home" },
@@ -17,8 +18,8 @@ const DesktopSidebar = () => {
     <aside className="hidden md:flex flex-col items-center w-[60px] bg-nav-rail border-r border-border shrink-0 h-full py-5 justify-between">
       {/* Logo */}
       <button onClick={() => navigate("/home")} className="mb-6">
-        <div className="w-10 h-10 rounded-xl gradient-primary flex items-center justify-center">
-          <MessageCircle size={20} className="text-primary-foreground" fill="currentColor" />
+        <div className="w-10 h-10 rounded-xl flex items-center justify-center">
+          <img src={logo} alt="DMchat" className="w-10 h-10" />
         </div>
       </button>
 
