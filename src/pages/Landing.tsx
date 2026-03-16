@@ -50,7 +50,7 @@ const Landing = () => {
         className="relative z-10 flex flex-col items-center w-full px-8 pb-12"
         style={{ marginTop: "auto" }}
       >
-        <img src={logo} alt="DMchat" className="w-16 h-16 mb-4" />
+        <img src={logo} alt="Chatabox" className="w-16 h-16 mb-4" />
         <h1 className="text-4xl md:text-5xl font-extrabold text-foreground tracking-tight mb-16">
           Chatabox
         </h1>
