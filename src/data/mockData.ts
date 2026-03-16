@@ -200,7 +200,7 @@ export const creators: Creator[] = [
     coverImage: cover1,
     online: true,
     followers: 21000,
-    bio: "Welcome to my Chatabox, I run this account on my own and reply to all your lovely messages.",
+    bio: "Welcome to my DMchat, I run this account on my own and reply to all your lovely messages.",
     isSubscribed: true,
     isFollowing: true,
     subscriptionPrice: 9.99,
