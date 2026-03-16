@@ -18,9 +18,7 @@ const Login = () => {
         className="relative z-10 flex flex-col flex-1 px-6 pt-12 pb-6 max-w-md mx-auto w-full"
       >
         <div className="flex flex-col items-center mb-10">
-          <div className="w-16 h-16 rounded-2xl gradient-primary flex items-center justify-center mb-4 shadow-2xl shadow-primary/30">
-            <MessageCircle size={32} className="text-primary-foreground" fill="currentColor" />
-          </div>
+          <img src={logo} alt="DMchat" className="w-16 h-16 mb-4" />
           <h1 className="text-3xl font-extrabold text-foreground">Welcome Back</h1>
           <p className="text-sm text-muted-foreground mt-1">Log in to your DMchat account</p>
         </div>
